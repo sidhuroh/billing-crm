@@ -1,4 +1,11 @@
 <?php include_once('connection/db.php'); ?>
+<?php
+if (isset($_SESSION['username'])) {
+    echo "<meta http-equiv=\"refresh\" content=\"0; url=dashboard.php\">";
+    exit();
+} else {
+}
+?>
 <html>
 
 <head>

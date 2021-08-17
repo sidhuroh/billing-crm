@@ -1,6 +1,7 @@
 <?php
 include_once("connection/header.php");
 ?>
+
 <title>Dashboard - Home | Billing</title>
 <div style="background: #003566;">
     <div id="margin-setter2">
