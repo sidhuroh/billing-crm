@@ -22,10 +22,18 @@ if (isset($_SESSION['username'])) {
     <br><br>
     <p style="font-weight: 600; margin-left: 30px; font-size: 12px; color: #dee2e6;">MANAGEMENT</p><br>
     <a href='role-manager.php'><button class="sidebar_link"><i class="fas fa-users" style="padding-right: 15px;"></i> Set Roles</button><br></a>
-    <button class="sidebar_link" onclick="main7()"><i class="fas fa-star" style="padding-right: 15px;"></i> Membership</button>
+    <button class="sidebar_link" onclick="panel3()"><i class="fas fa-star" style="padding-right: 15px;"></i> Membership</button>
     <br><br>
     <p style="font-weight: 600; margin-left: 30px; font-size: 12px; color: #dee2e6;">General</p><br>
-    <button class="sidebar_link" onclick="main7()"><i class="fas fa-cogs" style="padding-right: 15px;"></i> Settings</button>
+    <button class="sidebar_link" onclick="sidebar()"><i class="fas fa-cogs" style="padding-right: 15px;"></i> Settings</button>
+    <div id="more_settings" style="display: none;">
+        <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Profile Update</button>
+        <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Currencies</button>
+        <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Units</button>
+        <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> GST</button>
+        <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Taxes</button>
+        <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> States</button>
+    </div>
     <a href='logout.php'><button class="sidebar_link"><i class="fas fa-power-off" style="padding-right: 15px;"></i> Logout</button></a>
 </div>
 <div id="header_toggle">
@@ -57,6 +65,10 @@ if (isset($_SESSION['username'])) {
         document.getElementById("margin-setter").style.width = '80%';
         document.getElementById("margin-setter2").style.width = '80%';
         document.getElementById("margin-setter3").style.width = '80%';
+    }
+
+    function sidebar() {
+        $("#more_settings").toggle();
     }
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -108,9 +108,31 @@
 .sidebar_link:hover {
   background: #065a60;
 }
+.sidebar_link2 {
+  width: 100%;
+  color: #fff;
+  font-size: 13.5px;
+  background: #264653;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border: 1px solid #264653;
+  font-weight: 400;
+  transition: all 0.5s;
+  text-align: left;
+  padding-left: 40px;
+  font-family: Roboto-Medium;
+  outline: none;
+}
+.sidebar_link:hover {
+  background: #065a60;
+}
+.sidebar_link2:hover {
+  background: #2a9d8f;
+}
 .sidebar {
   z-index: 1000;
   width: 20%;
+  overflow-y: auto;
   height: 100%;
   background: #43aa8b;
   position: fixed;
