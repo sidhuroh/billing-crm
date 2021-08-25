@@ -3,10 +3,10 @@ include_once("connection/header.php");
 ?>
 
 <title>Dashboard - Home | Billing</title>
-<div style="background: #003566;">
+<div style="background: #fff;">
     <div id="margin-setter2">
-        <div style="padding: 30px;">
-            <f style='font-size: 28px; font-weight: 700; color: #fff;'>Super Admins</f>
+        <div style="padding: 20px;">
+            <f style='font-size: 18px; font-weight: 700; color: #555;'>Super Admins</f>
         </div>
     </div>
     <div style='clear: both;'></div>
@@ -45,7 +45,7 @@ include_once("connection/header.php");
                 font-weight: 700;
             }
         </style>
-        <div style=' padding: 40px; overflow-x: auto;
+        <div style='background: #fff; padding: 40px; overflow-x: auto;
                 overflow-y: hidden;
                 white-space: nowrap; border: 1px solid #eee; border-radius: 10px; box-shadow: 13px 17px 28px -20px rgba(97,97,97,0.68);
 -webkit-box-shadow: 13px 17px 28px -20px rgba(97,97,97,0.68);

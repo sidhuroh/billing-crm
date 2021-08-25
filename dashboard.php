@@ -3,10 +3,10 @@ include_once("connection/header.php");
 ?>
 
 <title>Dashboard - Home | Billing</title>
-<div style="background: #003566;">
+<div style="background: #fff;">
     <div id="margin-setter2">
-        <div style="padding: 30px;">
-            <f style='font-size: 28px; font-weight: 700; color: #fff;'>Dashboard</f>
+        <div style="padding: 20px;">
+            <f style='font-size: 18px; font-weight: 700; color: #555;'>Dashboard</f>
         </div>
     </div>
     <div style='clear: both;'></div>

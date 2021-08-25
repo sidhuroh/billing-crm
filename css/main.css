@@ -5,6 +5,9 @@
   font-family: "Roboto";
   font-size: 14px;
 }
+body {
+  background: #f1f1f1;
+}
 .login_area {
   float: left;
   width: 35%;
@@ -33,7 +36,7 @@
 }
 #post_header {
   width: 100%;
-  background: #003566;
+  background: #fff;
   border-bottom: 1px solid #eee;
 }
 .image_area {
@@ -94,10 +97,10 @@
   width: 100%;
   color: #fff;
   font-size: 13.5px;
-  background: #43aa8b;
+  background: #101d42;
   padding-top: 15px;
   padding-bottom: 15px;
-  border: 1px solid #43aa8b;
+  border: 1px solid #101d42;
   font-weight: 400;
   transition: all 0.5s;
   text-align: left;
@@ -105,17 +108,14 @@
   font-family: Roboto-Medium;
   outline: none;
 }
-.sidebar_link:hover {
-  background: #065a60;
-}
 .sidebar_link2 {
   width: 100%;
   color: #fff;
   font-size: 13.5px;
-  background: #264653;
+  background: #101d42;
   padding-top: 12px;
   padding-bottom: 12px;
-  border: 1px solid #264653;
+  border: 1px solid #101d42;
   font-weight: 400;
   transition: all 0.5s;
   text-align: left;
@@ -123,18 +123,17 @@
   font-family: Roboto-Medium;
   outline: none;
 }
-.sidebar_link:hover {
-  background: #065a60;
-}
+.sidebar_link:hover,
 .sidebar_link2:hover {
-  background: #2a9d8f;
+  background: #232ed1;
+  border: 1px solid #232ed1;
 }
 .sidebar {
   z-index: 1000;
   width: 20%;
   overflow-y: auto;
   height: 100%;
-  background: #43aa8b;
+  background: #101d42;
   position: fixed;
   box-shadow: 16px 14px 38px -15px rgba(74, 74, 74, 0.63);
   -webkit-box-shadow: 16px 14px 38px -15px rgba(74, 74, 74, 0.63);
@@ -152,6 +151,10 @@
   border-bottom: 1px solid #eee;
   height: 65px;
   right: 0;
+  z-index: 1000;
+  box-shadow: -2px 1px 77px 9px rgba(204, 204, 204, 0.83);
+  -webkit-box-shadow: -2px 1px 77px 9px rgba(204, 204, 204, 0.83);
+  -moz-box-shadow: -2px 1px 77px 9px rgba(204, 204, 204, 0.83);
 }
 
 #body_area {
@@ -170,9 +173,12 @@
 }
 .flex-container > div {
   background: #fff;
-  border: 2px solid #eee;
+  border: 1px solid #eee;
   margin: 10px;
-  border-radius: 12px;
+  border-radius: 4px;
+  box-shadow: -2px 1px 77px 9px rgba(204, 204, 204, 0.83);
+  -webkit-box-shadow: -2px 1px 77px 9px rgba(204, 204, 204, 0.83);
+  -moz-box-shadow: -2px 1px 77px 9px rgba(204, 204, 204, 0.83);
 }
 .flex-container2 {
   display: flex;
@@ -200,13 +206,13 @@
   }
   #post_header {
     width: 100%;
-    background: #003566;
+    background: #fff;
     border-bottom: 1px solid #eee;
   }
   .sidebar {
     width: 300px;
     height: 100%;
-    background: #43aa8b;
+    background: #101d42;
     position: fixed;
     box-shadow: 16px 14px 38px -15px rgba(74, 74, 74, 0.63);
     -webkit-box-shadow: 16px 14px 38px -15px rgba(74, 74, 74, 0.63);

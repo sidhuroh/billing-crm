@@ -3,17 +3,17 @@ include_once("connection/header.php");
 ?>
 
 <title>Dashboard - Home | Billing</title>
-<div style="background: #003566;">
+<div style="background: #fff;">
     <div id="margin-setter2">
-        <div style="padding: 30px;">
-            <f style='font-size: 28px; font-weight: 700; color: #fff;'>Store Admins > Edit Role</f>
+        <div style="padding: 20px;">
+            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Edit Role</f>
         </div>
     </div>
     <div style='clear: both;'></div>
 </div>
 <div id="margin-setter3">
     <div style='padding: 40px;'>
-        <div style='margin-right: auto; margin-left: auto; max-width: 800px; border-radius: 8px; border: 2px solid #eee;'>
+        <div style='background: #fff; margin-right: auto; margin-left: auto; max-width: 800px; border-radius: 8px; border: 2px solid #eee;'>
             <div style='padding: 20px;'>
                 <?php
                 $role_id = @$_GET['id'];

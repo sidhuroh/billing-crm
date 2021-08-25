@@ -42,7 +42,11 @@ if (isset($_SESSION['username'])) {
             <button id="hide_btn" class="mobile_hide" style="background: #fff; float: left;  border: 1px solid #eee; padding: 10px; margin-top: 5px; color: #888;" onclick="panel1()"><i class="fas fa-bars"></i></button>
             <button id="show_btn" style="float: left; display: none; background: #43aa8b; border: 1px solid #eee; padding: 10px; margin-top: 5px; color: #fff;" onclick="panel2()"><i class="fas fa-bars"></i></button>
             <a href='index.php'><button class="mobile_hide" id="Home" style="background: #fff; float: left;  border: 1px solid #eee; padding: 10px; margin-top: 5px; color: #888; margin-left: 10px;"><i class="fas fa-home"></i></button></a>
-            <a href='logout.php'><button id="logout" style="float: right; background: #023e8a; border: 1px solid #023e8a; border-radius: 4px; padding: 10px; margin-top: 5px; color: #fff;"><i class="fas fa-power-off"></i> Logout</button></a>
+            <div style='float: right; width: 150px; height: 20px;'>
+                <img src='images/default.png' width='40px' height='40px' style='border-radius: 100%; float: left;'>
+                <a href='index.php' style='text-transform: capitalize; text-decoration: none; font-weight: 300; margin-left: 10px; font-size: 15px; color: #333; float:left; margin-top: 5px;'><?php echo $user_name; ?><br>
+                    <a style='font-weight: 400; margin-left: 10px;'><?php echo $user_type; ?></a></a>
+            </div>
         </div>
     </div>
 </div>
