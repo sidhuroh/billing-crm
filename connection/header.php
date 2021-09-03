@@ -27,7 +27,7 @@ if (isset($_SESSION['username'])) {
     <p style="font-weight: 600; margin-left: 30px; font-size: 12px; color: #dee2e6;">General</p><br>
     <button class="sidebar_link" onclick="sidebar()"><i class="fas fa-cogs" style="padding-right: 15px;"></i> Settings</button>
     <div id="more_settings" style="display: none;">
-        <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Profile Update</button>
+        <a href='edit-role.php?id=<?php echo $user_id; ?>'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Profile Update</button></a>
         <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Currencies</button>
         <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Units</button>
         <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> GST</button>

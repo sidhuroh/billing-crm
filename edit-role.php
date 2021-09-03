@@ -2,7 +2,7 @@
 include_once("connection/header.php");
 ?>
 
-<title>Dashboard - Home | Billing</title>
+<title>Dashboard - Edit Role | Billing</title>
 <div style="background: #fff;">
     <div id="margin-setter2">
         <div style="padding: 20px;">
@@ -66,7 +66,7 @@ include_once("connection/header.php");
                 }
                 echo $report;
                 ?>
-                <p style='font-weight: 600; font-size: 18px; color: #555;'>Edit Store Admins</p><br>
+                <p style='font-weight: 600; font-size: 18px; color: #555;'>Edit Profile</p><br>
                 <form action='#' method='POST'>
                     <div class='flex-container2'>
                         <div style='flex-grow: 1;'>

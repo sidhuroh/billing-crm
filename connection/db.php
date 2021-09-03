@@ -11,6 +11,7 @@ if (isset($_SESSION['username'])) {
     $query = "SELECT * FROM users WHERE email='$user'";
     $sql = mysqli_query($conn, $query);
     while ($row = mysqli_fetch_assoc($sql)) {
+        $user_id = $row['id'];
         $user_name = $row['user_name'];
         $user_type = $row['user_type'];
     }

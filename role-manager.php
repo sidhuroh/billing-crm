@@ -2,7 +2,7 @@
 include_once("connection/header.php");
 ?>
 
-<title>Dashboard - Home | Billing</title>
+<title>Dashboard - Store Admins | Billing</title>
 <div style="background: #fff;">
     <div id="margin-setter2">
         <div style="padding: 20px;">
