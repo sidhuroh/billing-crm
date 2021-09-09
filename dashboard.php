@@ -61,7 +61,7 @@ include_once("connection/header.php");
                     </center>
                     <div class="circular" style="margin-left: auto; margin-right: auto;">
                         <div class="inner"></div>
-                        <div class="number">50%</div>
+                        <div class="number">5000</div>
                         <div class="circle">
                             <div class="bar left">
                                 <div class="progress"></div>
@@ -89,11 +89,11 @@ include_once("connection/header.php");
     const numb = document.querySelector(".number");
     let counter = 0;
     setInterval(() => {
-        if (counter == 50) {
+        if (counter == 5000) {
             clearInterval();
         } else {
-            counter += 2;
-            numb.textContent = counter + "%";
+            counter += 50;
+            numb.textContent = counter + "₹";
         }
     }, 120);
 </script>
