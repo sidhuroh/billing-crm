@@ -6,8 +6,7 @@ include_once("connection/header.php");
 <div style="background: #fff;">
     <div id="margin-setter2">
         <div style="padding: 20px;">
-            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Edit Role</f>
-
+            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Create Role</f>
         </div>
     </div>
     <div style='clear: both;'></div>
@@ -17,43 +16,38 @@ include_once("connection/header.php");
         <div style='background: #fff; margin-right: auto; margin-left: auto; max-width: 800px; border-radius: 8px; border: 2px solid #eee;'>
             <div style='padding: 20px;'>
                 <?php
-                $role_id = @$_GET['id'];
-                $query = "SELECT * from users WHERE id = '$role_id'";
-                $result = mysqli_query($conn, $query);
-
-                while ($rows = mysqli_fetch_assoc($result)) {
-                    $id = $rows['id'];
-                    $name = $rows['user_name'];
-                    $email = $rows['email'];
-                    $phone = $rows['phone'];
-                    $store_count = $rows['store_count'];
-                }
-                ?>
-                <?php
                 $update_btn = @$_POST['update'];
                 if ($update_btn) {
+                    $added_on = date('Y-m-d');
                     $name_input = strip_tags(@$_POST['user_name']);
                     $email_input = strip_tags(@$_POST['email']);
                     $phone_input = strip_tags(@$_POST['phone']);
                     $store_count_input = strip_tags(@$_POST['store_count']);
                     $password_input = strip_tags(@$_POST['password']);
                     $confirm_password_input = strip_tags(@$_POST['confirm_password']);
-                    if ($name_input && $email_input && $phone_input && $store_count_input) {
+                    if ($name_input && $email_input && $phone_input && $store_count_input && $password_input && $confirm_password_input) {
                         if ($password_input && $confirm_password_input) {
                             if ($password_input == $confirm_password_input) {
-                                $query = "UPDATE `users` SET `user_name`='$name_input',`email`='$email_input',`store_count`='$store_count_input',`phone`='$phone_input',`password`='$password_input' WHERE id='$id'";
-                                $result = mysqli_query($conn, $query);
-                                echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=1\">";
+                                $user_check2 = "SELECT email from users WHERE email='$email_input'";
+                                $result2 = mysqli_query($conn, $user_check2);
+                                $result_check2 = mysqli_num_rows($result2);
+                                if (!$result_check2 > 0) {
+                                    $query = "INSERT INTO `users`(`id`, `user_name`, `email`, `password`, `user_type`, `added_on`, `added_to`, `store_count`, `status`, `phone`) VALUES (null,'$name_input','$email_input','$password_input','storeadmin','$added_on','','$store_count_input','active','$phone_input')";
+                                    $result = mysqli_query($conn, $query);
+                                    echo "<meta http-equiv=\"refresh\" content=\"0; url=role-manager.php\">";
+                                } else {
+                                    echo "<meta http-equiv=\"refresh\" content=\"0; url=create-role.php?id=$id&&updated=3\">";
+                                }
                             } else {
-                                echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=2\">";
+                                echo "<meta http-equiv=\"refresh\" content=\"0; url=create-role.php?id=$id&&updated=2\">";
                             }
                         } else {
-                            $query = "UPDATE `users` SET `user_name`='$name_input',`email`='$email_input',`store_count`='$store_count_input',`phone`='$phone_input' WHERE id='$id'";
+                            $query = "";
                             $result = mysqli_query($conn, $query);
-                            echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=1\">";
+                            echo "<meta http-equiv=\"refresh\" content=\"0; url=create-role.php?id=$id&&updated=1\">";
                         }
                     } else {
-                        echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=0\">";
+                        echo "<meta http-equiv=\"refresh\" content=\"0; url=create-role.php?id=$id&&updated=0\">";
                     }
                 }
                 $report = @$_GET['updated'];
@@ -63,11 +57,13 @@ include_once("connection/header.php");
                     $report = "<p style='background: #ff006e; padding: 10px; border-radius 15px; color: #fff; margin-bottom: 20px;'><i class='fas fa-times-circle'></i> You Cannot Leave Name, Email, Phone, Store Input Empty!</p>";
                 } else if ($report == "2") {
                     $report = "<p style='background: #ff006e; padding: 10px; border-radius 15px; color: #fff; margin-bottom: 20px;'><i class='fas fa-times-circle'></i> Both Passwords Dont Match!</p>";
+                } else if ($report == "3") {
+                    $report = "<p style='background: #ff006e; padding: 10px; border-radius 15px; color: #fff; margin-bottom: 20px;'><i class='fas fa-times-circle'></i> E-Mail Already Exist!</p>";
                 } else {
                 }
                 echo $report;
                 ?>
-                <p style='font-weight: 600; font-size: 18px; color: #555;'>Edit Profile</p><br>
+                <p style='font-weight: 600; font-size: 18px; color: #555;'>Create Profile</p><br>
                 <form action='#' method='POST'>
                     <div class='flex-container2'>
                         <div style='flex-grow: 1;'>
@@ -100,7 +96,7 @@ include_once("connection/header.php");
                         </div>
                     </div>
                     <div style='padding: 10px;'>
-                        <input type='submit' name="update" value="Update" class="form_control_submit" />
+                        <input type='submit' name="update" value="Create Role" class="form_control_submit" />
                     </div>
                 </form>
             </div>

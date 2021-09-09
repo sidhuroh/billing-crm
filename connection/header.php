@@ -28,7 +28,7 @@ if (isset($_SESSION['username'])) {
     <button class="sidebar_link" onclick="sidebar()"><i class="fas fa-cogs" style="padding-right: 15px;"></i> Settings</button>
     <div id="more_settings" style="display: none;">
         <a href='edit-role.php?id=<?php echo $user_id; ?>'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Profile Update</button></a>
-        <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Currencies</button>
+        <a href='currencies-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Currencies</button></a>
         <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Units</button>
         <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> GST</button>
         <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Taxes</button>

@@ -50,9 +50,17 @@ include_once("connection/header.php");
                     font-weight: 700;
                 }
             </style>
+
+            <?php
+            $report = @$_GET['delete_report'];
+            if ($report == "1") {
+                echo $report = "<p style='margin-bottom: 10px; border-radius: 4px; color: #fff; background: #52b788; padding: 10px;'><i class='fas fa-check-square'></i> Currency Has Been Deleted Successfully!</p>";
+            }
+            ?>
+
             <table id="customers">
                 <tr>
-                    <th>ID</th>
+                    <th>Unique. ID</th>
                     <th>Title</th>
                     <th>Symbol</th>
                     <th>Status</th>
@@ -77,7 +85,9 @@ include_once("connection/header.php");
                     <td>$title</td>
                     <td>$symbol</td>
                     <td>$color_status</td>
-                    <td><a href='edit-currencies-config.php?id=$id' style='color: #fff; background: #3a86ff; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-edit'></i></a></td>
+                    <td><a href='edit-currencies-config.php?id=$id' style='color: #fff; background: #3a86ff; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-edit'></i></a>
+                    <a href='delete-currencies.php?id=$id' style='color: #fff; background: #ff006e; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-trash'></i></a>
+                    </td>
                 </tr>
                 ";
                 ?>

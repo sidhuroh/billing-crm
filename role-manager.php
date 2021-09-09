@@ -7,6 +7,7 @@ include_once("connection/header.php");
     <div id="margin-setter2">
         <div style="padding: 20px;">
             <f style='font-size: 18px; font-weight: 700; color: #555;'>Super Admins</f>
+            <a href='create-role.php' style='margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; background: #f72585; border-radius: 4px; padding: 10px;'><i class="fas fa-plus"></i> Add New</a>
         </div>
     </div>
     <div style='clear: both;'></div>
