@@ -29,8 +29,8 @@ if (isset($_SESSION['username'])) {
     <div id="more_settings" style="display: none;">
         <a href='edit-role.php?id=<?php echo $user_id; ?>'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Profile Update</button></a>
         <a href='currencies-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Currencies</button></a>
-        <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Units</button>
-        <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> GST</button>
+        <a href='units-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Units</button></a>
+        <a href='gst-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> GST</button></a>
         <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Taxes</button>
         <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> States</button>
     </div>
