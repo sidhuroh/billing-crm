@@ -31,8 +31,8 @@ if (isset($_SESSION['username'])) {
         <a href='currencies-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Currencies</button></a>
         <a href='units-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Units</button></a>
         <a href='gst-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> GST</button></a>
-        <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Taxes</button>
-        <button class="sidebar_link2"><i class="fas fa-arrow-right"></i> States</button>
+        <a href='taxes-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Taxes</button></a>
+        <a href='states-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> States</button></a>
     </div>
     <a href='logout.php'><button class="sidebar_link"><i class="fas fa-power-off" style="padding-right: 15px;"></i> Logout</button></a>
 </div>

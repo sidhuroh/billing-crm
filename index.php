@@ -18,7 +18,7 @@ if (isset($_SESSION['username'])) {
     <link rel="shortcut icon" href="images/logo.svg" type="image/x-icon" />
 </head>
 
-<body>
+<body style="background: #fff;">
     <script src="" async defer></script>
     <div class='login_area'>
         <br><br>
