@@ -27,45 +27,93 @@ include_once("connection/header.php");
                     $email = $rows['email'];
                     $phone = $rows['phone'];
                     $store_count = $rows['store_count'];
+                    $author = $rows['author'];
                 }
                 ?>
                 <?php
-                $update_btn = @$_POST['update'];
-                if ($update_btn) {
-                    $name_input = strip_tags(@$_POST['user_name']);
-                    $email_input = strip_tags(@$_POST['email']);
-                    $phone_input = strip_tags(@$_POST['phone']);
-                    $store_count_input = strip_tags(@$_POST['store_count']);
-                    $password_input = strip_tags(@$_POST['password']);
-                    $confirm_password_input = strip_tags(@$_POST['confirm_password']);
-                    if ($name_input && $email_input && $phone_input && $store_count_input) {
-                        if ($password_input && $confirm_password_input) {
-                            if ($password_input == $confirm_password_input) {
-                                $query = "UPDATE `users` SET `user_name`='$name_input',`email`='$email_input',`store_count`='$store_count_input',`phone`='$phone_input',`password`='$password_input' WHERE id='$id'";
+                if ($user_type == "superadmin") {
+                ?>
+                    <?php
+                    $update_btn = @$_POST['update'];
+                    if ($update_btn) {
+                        $name_input = strip_tags(@$_POST['user_name']);
+                        $email_input = strip_tags(@$_POST['email']);
+                        $phone_input = strip_tags(@$_POST['phone']);
+                        $store_count_input = strip_tags(@$_POST['store_count']);
+                        $password_input = strip_tags(@$_POST['password']);
+                        $confirm_password_input = strip_tags(@$_POST['confirm_password']);
+                        if ($name_input && $email_input && $phone_input && $store_count_input) {
+                            if ($password_input && $confirm_password_input) {
+                                if ($password_input == $confirm_password_input) {
+                                    $query = "UPDATE `users` SET `user_name`='$name_input',`email`='$email_input',`store_count`='$store_count_input',`phone`='$phone_input',`password`='$password_input' WHERE id='$id'";
+                                    $result = mysqli_query($conn, $query);
+                                    echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=1\">";
+                                } else {
+                                    echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=2\">";
+                                }
+                            } else {
+                                $query = "UPDATE `users` SET `user_name`='$name_input',`email`='$email_input',`store_count`='$store_count_input',`phone`='$phone_input' WHERE id='$id'";
                                 $result = mysqli_query($conn, $query);
                                 echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=1\">";
-                            } else {
-                                echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=2\">";
                             }
                         } else {
-                            $query = "UPDATE `users` SET `user_name`='$name_input',`email`='$email_input',`store_count`='$store_count_input',`phone`='$phone_input' WHERE id='$id'";
-                            $result = mysqli_query($conn, $query);
-                            echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=1\">";
+                            echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=0\">";
                         }
-                    } else {
-                        echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=0\">";
                     }
+                    $report = @$_GET['updated'];
+                    if ($report == "1") {
+                        $report = "<p style='margin-bottom: 10px; border-radius: 4px; color: #fff; background: #52b788; padding: 10px;'><i class='fas fa-check-square'></i> Profile Has Been Successfully Updated!</p>";
+                    } else if ($report == "0") {
+                        $report = "<p style='background: #ff006e; padding: 10px; border-radius 15px; color: #fff; margin-bottom: 20px;'><i class='fas fa-times-circle'></i> You Cannot Leave Name, Email, Phone, Store Input Empty!</p>";
+                    } else if ($report == "2") {
+                        $report = "<p style='background: #ff006e; padding: 10px; border-radius 15px; color: #fff; margin-bottom: 20px;'><i class='fas fa-times-circle'></i> Both Passwords Dont Match!</p>";
+                    } else {
+                    }
+                    echo $report;
+                    ?>
+                <?php
+                } else if ($user_type == "storeadmin") {
+                ?>
+                    <?php
+                    $update_btn = @$_POST['update'];
+                    if ($update_btn) {
+                        $name_input = strip_tags(@$_POST['user_name']);
+                        $email_input = strip_tags(@$_POST['email']);
+                        $phone_input = strip_tags(@$_POST['phone']);
+                        $author = strip_tags(@$_POST['author']);
+                        $password_input = strip_tags(@$_POST['password']);
+                        $confirm_password_input = strip_tags(@$_POST['confirm_password']);
+                        if ($name_input && $email_input && $phone_input) {
+                            if ($password_input && $confirm_password_input) {
+                                if ($password_input == $confirm_password_input) {
+                                    $query = "UPDATE `users` SET `user_name`='$name_input',`email`='$email_input',`author`='$author',`phone`='$phone_input',`password`='$password_input' WHERE id='$id'";
+                                    $result = mysqli_query($conn, $query);
+                                    echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=1\">";
+                                } else {
+                                    echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=2\">";
+                                }
+                            } else {
+                                $query = "UPDATE `users` SET `user_name`='$name_input',`email`='$email_input',`author`='$author',`phone`='$phone_input' WHERE id='$id'";
+                                $result = mysqli_query($conn, $query);
+                                echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=1\">";
+                            }
+                        } else {
+                            echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id&&updated=0\">";
+                        }
+                    }
+                    $report = @$_GET['updated'];
+                    if ($report == "1") {
+                        $report = "<p style='margin-bottom: 10px; border-radius: 4px; color: #fff; background: #52b788; padding: 10px;'><i class='fas fa-check-square'></i> Profile Has Been Successfully Updated!</p>";
+                    } else if ($report == "0") {
+                        $report = "<p style='background: #ff006e; padding: 10px; border-radius 15px; color: #fff; margin-bottom: 20px;'><i class='fas fa-times-circle'></i> You Cannot Leave Name, Email, Phone, Store Input Empty!</p>";
+                    } else if ($report == "2") {
+                        $report = "<p style='background: #ff006e; padding: 10px; border-radius 15px; color: #fff; margin-bottom: 20px;'><i class='fas fa-times-circle'></i> Both Passwords Dont Match!</p>";
+                    } else {
+                    }
+                    echo $report;
+                    ?>
+                <?php
                 }
-                $report = @$_GET['updated'];
-                if ($report == "1") {
-                    $report = "<p style='margin-bottom: 10px; border-radius: 4px; color: #fff; background: #52b788; padding: 10px;'><i class='fas fa-check-square'></i> Profile Has Been Successfully Updated!</p>";
-                } else if ($report == "0") {
-                    $report = "<p style='background: #ff006e; padding: 10px; border-radius 15px; color: #fff; margin-bottom: 20px;'><i class='fas fa-times-circle'></i> You Cannot Leave Name, Email, Phone, Store Input Empty!</p>";
-                } else if ($report == "2") {
-                    $report = "<p style='background: #ff006e; padding: 10px; border-radius 15px; color: #fff; margin-bottom: 20px;'><i class='fas fa-times-circle'></i> Both Passwords Dont Match!</p>";
-                } else {
-                }
-                echo $report;
                 ?>
                 <p style='font-weight: 600; font-size: 18px; color: #555;'>Edit Profile</p><br>
                 <form action='#' method='POST'>
@@ -85,8 +133,29 @@ include_once("connection/header.php");
                             <input type='tel' name="phone" placeholder="+91 9988776655" value="<?php echo $phone; ?>" class="form_control" />
                         </div>
                         <div style='flex-grow: 1;'>
-                            <p style='font-weight: 300; font-size: 14px; color: #333;'>No. Of Stores</p>
-                            <input type='number' name="store_count" placeholder="10 - 50" value="<?php echo $store_count; ?>" class="form_control" />
+                            <?php
+                            if ($user_type == "superadmin") {
+                            ?>
+                                <p style='font-weight: 300; font-size: 14px; color: #333;'>No. Of Stores</p>
+                                <input type='number' name="store_count" placeholder="10 - 50" value="<?php echo $store_count; ?>" class="form_control" />
+                            <?php
+                            } else if ($user_type == "storeadmin") {
+                            ?>
+                                <p style='font-weight: 300; font-size: 14px; color: #333;'>Choose One Store</p>
+                                <select name="author" class="form_control">
+                                    <option value='$author'><?php echo $author ?></option>
+                                    <?php
+                                    $sql = "SELECT * FROM stores WHERE store_by = '$user'";
+                                    $query = mysqli_query($conn, $sql);
+                                    while ($rows = mysqli_fetch_assoc($query)) {
+                                        $store_name = $rows['store_name'];
+                                        echo "<option value='$store_name'>$store_name</option>";
+                                    }
+                                    ?>
+                                </select>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                     <div class='flex-container2'>

@@ -8,6 +8,12 @@
 body {
   background: #f1f1f1;
 }
+.input_inv_style {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
 .login_area {
   float: left;
   width: 35%;
@@ -33,6 +39,35 @@ body {
 .form_control_submit:hover {
   background: #0077b6;
   border: 1px solid #0077b6;
+}
+.invoice_input {
+  border: 1px solid #fff;
+  padding: 5px;
+  background: #fff;
+  font-size: 12px;
+  border-radius: 4px;
+  outline: none;
+}
+.invoice_input_add {
+  border: 1px solid #f3950d;
+  padding: 5px;
+  background: #f3950d;
+  font-size: 12px;
+  border-radius: 4px;
+  outline: none;
+  color: #fff;
+}
+.invoice_input_times {
+  border: 1px solid #ec255a;
+  padding: 5px;
+  background: #ec255a;
+  font-size: 12px;
+  border-radius: 4px;
+  outline: none;
+  color: #fff;
+}
+.invoice_input:focus {
+  border: 1px solid #023e8a;
 }
 #post_header {
   width: 100%;
@@ -156,7 +191,14 @@ body {
   -webkit-box-shadow: -2px 1px 77px 9px rgba(204, 204, 204, 0.83);
   -moz-box-shadow: -2px 1px 77px 9px rgba(204, 204, 204, 0.83);
 }
-
+.generate_invoice_btn {
+  padding: 15px;
+  font-weight: 500;
+  color: #333;
+  background: #eee;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
 #body_area {
   width: 100%;
   background: #fff;
@@ -171,6 +213,10 @@ body {
   display: flex;
   flex-direction: row;
 }
+.flex-container3 {
+  display: flex;
+  flex-direction: row;
+}
 .flex-container > div {
   background: #fff;
   border: 1px solid #eee;
@@ -181,6 +227,7 @@ body {
   -webkit-box-shadow: -2px 1px 77px 9px rgba(204, 204, 204, 0.83);
   -moz-box-shadow: -2px 1px 77px 9px rgba(204, 204, 204, 0.83);
 }
+
 .flex-container2 {
   display: flex;
   flex-direction: row;

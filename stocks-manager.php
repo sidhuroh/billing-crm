@@ -2,24 +2,13 @@
 include_once("connection/header.php");
 ?>
 
-<title>Dashboard - Store Admins | Billing</title>
+<title>Dashboard - Stocks Manager | Billing</title>
 <div style="background: #fff;">
     <div id="margin-setter2">
         <div style="padding: 20px;">
-            <f style='font-size: 18px; font-weight: 700; color: #555;'>
-                <?php
-                if ($user_type == "superadmin") {
-                ?>
-                    Super Admins
-                <?php
-                } else if ($user_type == "storeadmin") {
-                ?>
-                    Manage Store Branches
-                <?php
-                }
-                ?>
+            <f style='font-size: 18px; font-weight: 700; color: #555;'>Stocks Manager
             </f>
-            <a href='create-role.php' style='margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; background: #f72585; border-radius: 4px; padding: 10px;'><i class="fas fa-plus"></i> Add New</a>
+            <a href='create-stock-manager.php' style='margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; background: #f72585; border-radius: 4px; padding: 10px;'><i class="fas fa-plus"></i> Add New</a>
         </div>
     </div>
     <div style='clear: both;'></div>
@@ -66,43 +55,24 @@ include_once("connection/header.php");
             <?php
             $report = @$_GET['delete_report'];
             if ($report == "1") {
-                $report = "<p style='margin-bottom: 10px; border-radius: 4px; color: #fff; background: #ff006e; padding: 10px;'>Admin Role Has Been Successfully Deleted!</p>";
+                echo $report = "<p style='margin-bottom: 10px; border-radius: 4px; color: #fff; background: #ff006e; padding: 10px;'>Stocks Has Been Successfully Deleted!</p>";
             }
             $report;
             ?>
             <table id="customers">
                 <tr>
                     <th>ID</th>
-                    <th>Username</th>
-                    <?php
-                    if ($user_type == "superadmin") {
-                    } else if ($user_type == "storeadmin") {
-                    ?>
-                        <th>Store Manager</th>
-                    <?php
-                    }
-                    ?>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Validity</th>
+                    <th>Stock Name</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
                 <?php
-                if ($user_type == "superadmin") {
-                    $query = "SELECT * from users WHERE user_type = 'storeadmin'";
-                } else if ($user_type == "storeadmin") {
-                    $query = "SELECT * from users WHERE user_type = 'substoreadmin' and administrator = '$user'";
-                }
+                $query = "SELECT * from stocks WHERE admin = '$user'";
                 $result = mysqli_query($conn, $query);
 
                 while ($rows = mysqli_fetch_assoc($result)) {
                     $id = $rows['id'];
-                    $name = $rows['user_name'];
-                    $email = $rows['email'];
-                    $phone = $rows['phone'];
-                    $author = $rows['author'];
-                    $added_on = $rows['added_on'];
+                    $stock_name = $rows['name'];
                     $status = $rows['status'];
                     if ($status == "active") {
                         $color_status = "<f style='background: #2ec4b6; padding: 5px; border-radius 15px; color: #fff;'>$status</f>";
@@ -111,18 +81,9 @@ include_once("connection/header.php");
                     }
                     echo "<tr>
                     <td><b>#$id</b></td>
-                    <td>$name</td>
-                    ";
-                    if ($user_type == "superadmin") {
-                    } else if ($user_type == "storeadmin") {
-                        echo "<td>$author</td>";
-                    }
-                    echo "
-                    <td>$email</td>
-                    <td>$phone</td>
-                    <td>$added_on</td>
+                    <td>$stock_name</td>
                     <td>$color_status</td>
-                    <td><a href='edit-role.php?id=$id' style='color: #fff; background: #3a86ff; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-edit'></i></a>
+                    <td><a href='edit-stock-manager.php?id=$id' style='color: #fff; background: #3a86ff; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-edit'></i></a>
                     <a onclick='show_alert$id();' style='color: #fff; background: #ff006e; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-trash'></i></a>
                     <a onclick='show_alert2$id();' style='color: #fff; background: #fcbf49; padding: 8px; border-radius: 8px;'><i class='fas fa-power-off'></i></a></td>
                 </tr>
@@ -130,9 +91,9 @@ include_once("connection/header.php");
                 ?>
                     <script>
                         function show_alert<?php echo $id; ?>() {
-                            var check = confirm("Are you sure you want to delete <?php echo $name; ?>?");
+                            var check = confirm("Are you sure you want to delete <?php echo $stock_name; ?>?");
                             if (check == true) {
-                                window.location = "delete-role.php?id=<?php echo $id ?>";
+                                window.location = "delete-stock-manager.php?id=<?php echo $id ?>";
                             } else {
                                 //Do Nothing!
                             }
@@ -140,9 +101,9 @@ include_once("connection/header.php");
                     </script>
                     <script>
                         function show_alert2<?php echo $id; ?>() {
-                            var check = confirm("Are you sure you want to switch status of <?php echo $name; ?>?");
+                            var check = confirm("Are you sure you want to switch status of <?php echo $stock_name; ?>?");
                             if (check == true) {
-                                window.location = "switch-status-role.php?id=<?php echo $id ?>";
+                                window.location = "switch-stock-manager.php?id=<?php echo $id ?>";
                             } else {
                                 //Do Nothing!
                             }

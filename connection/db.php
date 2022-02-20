@@ -14,6 +14,8 @@ if (isset($_SESSION['username'])) {
         $user_id = $row['id'];
         $user_name = $row['user_name'];
         $user_type = $row['user_type'];
+        $user_phone = $row['phone'];
+        $store_count = $row['store_count'];
     }
 } else {
     $user = "No User";

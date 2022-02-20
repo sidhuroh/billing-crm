@@ -1,0 +1,97 @@
+<?php
+include_once("connection/header.php");
+?>
+
+<title>Dashboard - Customers | Billing</title>
+<div style="background: #fff;">
+    <div id="margin-setter2">
+        <div style="padding: 20px;">
+            <f style='font-size: 18px; font-weight: 700; color: #555;'>Customers
+            </f>
+            <a href='create-store-manager.php' style='margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; background: #1D6F42; border-radius: 4px; padding: 10px;'><i class="fas fa-file-excel"></i> &nbsp; Download CSV</a>
+        </div>
+    </div>
+    <div style='clear: both;'></div>
+</div>
+<div id="margin-setter3">
+    <div style='padding: 20px 40px;'>
+        <style>
+            #customers {
+                font-family: "Roboto";
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            #customers td,
+            #customers th {
+                padding: 15px;
+                color: #555;
+                font-weight: 300;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                border: 1px solid #e3f2fd;
+                padding: 15px;
+                text-align: left;
+                border-bottom: 2px solid #0077b6;
+                background-color: #e3f2fd;
+                color: #333;
+                font-weight: 700;
+            }
+        </style>
+        <div style='background: #fff; padding: 40px; overflow-x: auto;
+                overflow-y: hidden;
+                white-space: nowrap; border: 1px solid #eee; border-radius: 10px; box-shadow: 13px 17px 28px -20px rgba(97,97,97,0.68);
+-webkit-box-shadow: 13px 17px 28px -20px rgba(97,97,97,0.68);
+-moz-box-shadow: 13px 17px 28px -20px rgba(97,97,97,0.68);'>
+            <table id="customers">
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>State</th>
+                    <th>District</th>
+                    <th>Address</th>
+                </tr>
+                <?php
+                $query = "SELECT * from customers WHERE admin = '$user'";
+                $result = mysqli_query($conn, $query);
+
+                while ($rows = mysqli_fetch_assoc($result)) {
+                    $id = $rows['id'];
+                    $f_name = $rows['first_name'];
+                    $l_name = $rows['last_name'];
+                    $email = $rows['email'];
+                    $phone = $rows['phone'];
+                    $state = $rows['state'];
+                    $district = $rows['district'];
+                    $address = $rows['address'];
+                    echo "<tr>
+                        <td>$id</td>
+                        <td>$f_name</td>
+                        <td>$l_name</td>
+                        <td>$email</td>
+                        <td>$phone</td>
+                        <td>$state</td>
+                        <td>$district</td>
+                        <td>$address</td>
+                    </tr>
+                ";
+                ?>
+                <?php
+                }
+                ?>
+            </table>
+        </div>
+    </div>
+</div>
