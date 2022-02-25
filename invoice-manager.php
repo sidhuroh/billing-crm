@@ -8,6 +8,7 @@ include_once("connection/header.php");
         <div style="padding: 20px;">
             <f style='font-size: 18px; font-weight: 700; color: #555;'>Invoices
             </f>
+
             <?php
             if (isset($_POST['new_invoice'])) {
                 $rand = sprintf("%06d", mt_rand(1, 999999));
@@ -18,8 +19,10 @@ include_once("connection/header.php");
             }
             ?>
             <form action="invoice-manager.php" method="POST" style="display: inline;">
-                <input type="submit" name="new_invoice" value="Add New+" style='margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; background: #f72585; border-radius: 4px; padding: 10px; border: 1px solid #f72585;'>
+                <input type="submit" name="new_invoice" value="Add New+" style='margin-left: 20px; float: right; text-decoration: none; font-weight: 700; color: #fff; background: #f72585; border-radius: 4px; padding: 10px; border: 1px solid #f72585;'>
             </form>
+            <br><a href='dashboard.php' style='text-decoration: none; color: #023e8a;'>Dasboard</a><i class="fas fa-angle-right" style='margin-left: 5px; margin-right: 5px; color: #7ec061;'></i>
+            <a href='#' style='text-decoration: none; color: #023e8a;'>Invoices</a>
         </div>
     </div>
     <div style='clear: both;'></div>

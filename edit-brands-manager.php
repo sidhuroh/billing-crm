@@ -2,11 +2,11 @@
 include_once("connection/header.php");
 ?>
 
-<title>Dashboard - Create Stock | Billing</title>
+<title>Dashboard - Create Brands | Billing</title>
 <div style="background: #fff;">
     <div id="margin-setter2">
         <div style="padding: 20px;">
-            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Edit Stock</f>
+            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Edit Brands</f>
         </div>
     </div>
     <div style='clear: both;'></div>
@@ -17,7 +17,7 @@ include_once("connection/header.php");
             <div style='padding: 20px;'>
                 <?php
                 $role_id = @$_GET['id'];
-                $query = "SELECT * from stocks WHERE id = '$role_id'";
+                $query = "SELECT * from brands WHERE id = '$role_id'";
                 $result = mysqli_query($conn, $query);
 
                 while ($rows = mysqli_fetch_assoc($result)) {
@@ -30,11 +30,11 @@ include_once("connection/header.php");
                 if ($update_btn) {
                     $name_input = strip_tags(@$_POST['user_name']);
                     if ($name_input) {
-                        $query = "UPDATE `stocks` SET `name`='$name_input' WHERE id='$id'";
+                        $query = "UPDATE `brands` SET `name`='$name_input' WHERE id='$id'";
                         $result = mysqli_query($conn, $query);
-                        echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-stock-manager.php?id=$id\">";
+                        echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-brands-manager.php?id=$id\">";
                     } else {
-                        echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-stock-manager.php?id=$id&&updated=0\">";
+                        echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-brands-manager.php?id=$id&&updated=0\">";
                     }
                 }
                 $report = @$_GET['updated'];
@@ -48,8 +48,8 @@ include_once("connection/header.php");
                 <form action='#' method='POST'>
                     <div class='flex-container2'>
                         <div style='flex-grow: 1;'>
-                            <p style='font-weight: 300; font-size: 14px; color: #333;'>Stock Name</p>
-                            <input type='text' id='username' name="user_name" placeholder="Enter Stock Name" value="<?php echo $name; ?>" class="form_control" />
+                            <p style='font-weight: 300; font-size: 14px; color: #333;'>Brand Name</p>
+                            <input type='text' id='username' name="user_name" placeholder="Enter Brand Name" value="<?php echo $name; ?>" class="form_control" />
                         </div>
                     </div>
                     <div style='padding: 10px;'>

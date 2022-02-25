@@ -8,7 +8,9 @@ include_once("connection/header.php");
         <div style="padding: 20px;">
             <f style='font-size: 18px; font-weight: 700; color: #555;'>Stocks Manager
             </f>
-            <a href='create-stock-manager.php' style='margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; background: #f72585; border-radius: 4px; padding: 10px;'><i class="fas fa-plus"></i> Add New</a>
+            <a href='create-stock-manager.php' style='margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; float: right; background: #f72585; border-radius: 4px; padding: 10px;'><i class="fas fa-plus"></i> Add New</a>
+            <br><a href='dashboard.php' style='text-decoration: none; color: #023e8a;'>Dasboard</a><i class="fas fa-angle-right" style='margin-left: 5px; margin-right: 5px; color: #7ec061;'></i>
+            <a href='#' style='text-decoration: none; color: #023e8a;'>Stocks Manager</a>
         </div>
     </div>
     <div style='clear: both;'></div>
@@ -83,7 +85,8 @@ include_once("connection/header.php");
                     <td><b>#$id</b></td>
                     <td>$stock_name</td>
                     <td>$color_status</td>
-                    <td><a href='edit-stock-manager.php?id=$id' style='color: #fff; background: #3a86ff; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-edit'></i></a>
+                    <td><a href='brands-manager.php?id=$id' style='color: #fff; background: #0a9396; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-grip-horizontal'></i></a>
+                    <a href='edit-stock-manager.php?id=$id' style='color: #fff; background: #3a86ff; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-edit'></i></a>
                     <a onclick='show_alert$id();' style='color: #fff; background: #ff006e; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-trash'></i></a>
                     <a onclick='show_alert2$id();' style='color: #fff; background: #fcbf49; padding: 8px; border-radius: 8px;'><i class='fas fa-power-off'></i></a></td>
                 </tr>

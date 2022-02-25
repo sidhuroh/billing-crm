@@ -51,7 +51,14 @@ if ($user_type == "superadmin") {
                         <lord-icon src="https://cdn.lordicon.com/soseozvi.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:80px;height:80px; float: left;">
                         </lord-icon>
                         <f style='font-size: 16px; margin-left: 20px; font-weight: 700;'>Subscribers</f><br>
-                        <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'>0</p>
+                        <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'>
+                            <?php
+                            $sql = "SELECT * FROM users";
+                            $query = mysqli_query($conn, $sql);
+                            $rowcount = mysqli_num_rows($query);
+                            echo $rowcount;
+                            ?>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -63,7 +70,7 @@ if ($user_type == "superadmin") {
                         </center>
                         <div class="circular" style="margin-left: auto; margin-right: auto;">
                             <div class="inner"></div>
-                            <div class="number">5000</div>
+                            <div class="number">0</div>
                             <div class="circle">
                                 <div class="bar left">
                                     <div class="progress"></div>
@@ -91,7 +98,7 @@ if ($user_type == "superadmin") {
         const numb = document.querySelector(".number");
         let counter = 0;
         setInterval(() => {
-            if (counter == 5000) {
+            if (counter == 0) {
                 clearInterval();
             } else {
                 counter += 50;
@@ -111,7 +118,7 @@ if ($user_type == "superadmin") {
                         <lord-icon src="https://cdn.lordicon.com/qhviklyi.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:80px;height:80px; float: left;">
                         </lord-icon>
                         <f style='font-size: 16px; margin-left: 20px; font-weight: 700;'>Total Sales</f><br>
-                        <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'>0</p>
+                        <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'></p>
                     </div>
                 </div>
                 <div>
@@ -120,7 +127,13 @@ if ($user_type == "superadmin") {
                         <lord-icon src="https://cdn.lordicon.com/dqkyqxlp.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:80px;height:80px; float: left;">
                         </lord-icon>
                         <f style='font-size: 16px; margin-left: 20px; font-weight: 700;'>Number Of Store's</f><br>
-                        <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'><?php echo $store_count; ?></p>
+                        <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'>
+                            <?php
+                            $sql = "SELECT * FROM stores WHERE store_by='$user'";
+                            $query = mysqli_query($conn, $sql);
+                            $rowcount = mysqli_num_rows($query);
+                            echo $rowcount;
+                            ?></p>
                     </div>
                 </div>
             </div>
@@ -131,7 +144,12 @@ if ($user_type == "superadmin") {
                         <lord-icon src="https://cdn.lordicon.com/rgyftmhc.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:80px;height:80px; float: left;">
                         </lord-icon>
                         <f style='font-size: 16px; margin-left: 20px; font-weight: 700;'>Stocks</f><br>
-                        <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'>0</p>
+                        <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'><?php
+                                                                                                                $sql = "SELECT * FROM stocks WHERE admin='$user'";
+                                                                                                                $query = mysqli_query($conn, $sql);
+                                                                                                                $rowcount = mysqli_num_rows($query);
+                                                                                                                echo $rowcount;
+                                                                                                                ?></p>
                     </div>
                 </div>
                 <div>
@@ -139,8 +157,16 @@ if ($user_type == "superadmin") {
                         <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/nocovwne.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:80px;height:80px; float: left;">
                         </lord-icon>
-                        <f style='font-size: 16px; margin-left: 20px; font-weight: 700;'>Reports</f><br>
-                        <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'>0</p>
+                        <f style='font-size: 16px; margin-left: 20px; font-weight: 700;'>Customers</f><br>
+                        <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'>
+                            <?php
+                            $sql = "SELECT * FROM customers WHERE admin='$user'";
+                            $query = mysqli_query($conn, $sql);
+                            $rowcount = mysqli_num_rows($query);
+                            echo $rowcount;
+                            ?>
+
+                        </p>
                     </div>
                 </div>
             </div>

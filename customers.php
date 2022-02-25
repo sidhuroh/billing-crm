@@ -8,7 +8,9 @@ include_once("connection/header.php");
         <div style="padding: 20px;">
             <f style='font-size: 18px; font-weight: 700; color: #555;'>Customers
             </f>
-            <a href='create-store-manager.php' style='margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; background: #1D6F42; border-radius: 4px; padding: 10px;'><i class="fas fa-file-excel"></i> &nbsp; Download CSV</a>
+            <a href='create-store-manager.php' style='float: right; margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; background: #1D6F42; border-radius: 4px; padding: 10px;'><i class="fas fa-file-excel"></i> &nbsp; Download CSV</a>
+            <br><a href='dashboard.php' style='text-decoration: none; color: #023e8a;'>Dasboard</a><i class="fas fa-angle-right" style='margin-left: 5px; margin-right: 5px; color: #7ec061;'></i>
+            <a href='#' style='text-decoration: none; color: #023e8a;'>Customers</a>
         </div>
     </div>
     <div style='clear: both;'></div>

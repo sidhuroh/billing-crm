@@ -121,7 +121,14 @@ while ($row = mysqli_fetch_array($query)) {
                 <form action="invoice-engine.php?id=<?php echo $rand_id; ?>" method="POST" style="display: inline;">
                     <script type="text/javascript">
                         $(document).ready(function() {
-                            var html = '<tr><td><input type="text" name="item[]" placeholder="Name" class="invoice_input"></td><td><input type="text" name="qty[]" class="invoice_input" value="1"></td><td><input type="text" name="price[]" class="invoice_input" value="250"></td><td><input type="text" name="discount[]" class="invoice_input" value="5%"></td><td><input type="text" name="tax[]" class="invoice_input" value="5%"></td><td><input type="text" name="amount[]" class="invoice_input" value="100"></td><td><input type="button" id="remove" class="invoice_input_times" value="Remove"></td>';
+                            var html = '<tr><td><select name="item[]" class="invoice_input">' +
+                                '<?php $query = "SELECT * FROM stocks";
+                                    $sql = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_assoc($sql)) {
+                                        $name = $row['name'];
+                                        echo "<option value=$name>$name</option>";
+                                    } ?>' +
+                                '</select></td><td><input type="text" name="qty[]" class="invoice_input" value="1"></td><td><input type="text" name="price[]" class="invoice_input" value="250"></td><td><input type="text" name="discount[]" class="invoice_input" value="5%"></td><td><input type="text" name="tax[]" class="invoice_input" value="5%"></td><td><input type="text" name="amount[]" class="invoice_input" value="100"></td><td><input type="button" id="remove" class="invoice_input_times" value="Remove"></td>';
 
                             var max = 5;
                             var x = 1;

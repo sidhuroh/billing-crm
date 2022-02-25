@@ -1,12 +1,13 @@
 <?php
 include_once("connection/header.php");
+$stock_id = $_GET['id'];
 ?>
 
-<title>Dashboard - Create Stock | Billing</title>
+<title>Dashboard - Create Brands | Billing</title>
 <div style="background: #fff;">
     <div id="margin-setter2">
         <div style="padding: 20px;">
-            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Add Stock</f>
+            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Add Brands</f>
         </div>
     </div>
     <div style='clear: both;'></div>
@@ -24,14 +25,14 @@ include_once("connection/header.php");
                         $result2 = mysqli_query($conn, $store_name_check);
                         $result_check2 = mysqli_num_rows($result2);
                         if (!$result_check2 > 0) {
-                            $query = "INSERT INTO `stocks` (`id`, `name`, `status`, `admin`) VALUES (null,'$name_input','active','$user')";
+                            $query = "INSERT INTO `brands` (`id`, `name`, `status`, `admin`, `stock_id`) VALUES (null,'$name_input','active','$user','$stock_id')";
                             $result = mysqli_query($conn, $query);
-                            echo "<meta http-equiv=\"refresh\" content=\"0; url=stocks-manager.php\">";
+                            echo "<meta http-equiv=\"refresh\" content=\"0; url=brands-manager.php?id=$stock_id\">";
                         } else {
-                            echo "<meta http-equiv=\"refresh\" content=\"0; url=create-stock-manager.php?id=$id&&updated=3\">";
+                            echo "<meta http-equiv=\"refresh\" content=\"0; url=create-brands-manager.php?id=$id&&updated=3\">";
                         }
                     } else {
-                        echo "<meta http-equiv=\"refresh\" content=\"0; url=create-stock-manager.php?id=$id&&updated=0\">";
+                        echo "<meta http-equiv=\"refresh\" content=\"0; url=create-brands-manager.php?id=$id&&updated=0\">";
                     }
                 }
                 $report = @$_GET['updated'];
