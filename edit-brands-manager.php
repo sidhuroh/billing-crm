@@ -1,12 +1,13 @@
 <?php
 include_once("connection/header.php");
+$stock_id = $_GET['id'];
 ?>
 
-<title>Dashboard - Create Brands | Billing</title>
+<title>Dashboard - Edit Sub Stock | Billing</title>
 <div style="background: #fff;">
     <div id="margin-setter2">
         <div style="padding: 20px;">
-            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Edit Brands</f>
+            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Edit Sub Stocks</f>
         </div>
     </div>
     <div style='clear: both;'></div>
@@ -22,15 +23,35 @@ include_once("connection/header.php");
 
                 while ($rows = mysqli_fetch_assoc($result)) {
                     $id = $rows['id'];
-                    $name = $rows['name'];
+                    $name_input = $rows['name'];
+                    $model_input = $rows['model'];
+                    $barcode_input = $rows['barcode'];
+                    $SKU_input = $rows['SKU'];
+                    $HSN_input = $rows['HSN'];
+                    $Unit_input = $rows['Unit'];
+                    $gst_input = $rows['GST'];
+                    $sell_unit_price = $rows['S_Unit_Price'];
+                    $purchase_unit_price = $rows['P_Unit_Price'];
+                    $gross_unit_price = $rows['Gross'];
+                    $gst_unit_price = $rows['Tax'];
                 }
                 ?>
                 <?php
                 $update_btn = @$_POST['update'];
                 if ($update_btn) {
-                    $name_input = strip_tags(@$_POST['user_name']);
+                    $name_input = strip_tags(@$_POST['name']);
+                    $model_input = strip_tags(@$_POST['model']);
+                    $barcode_input = strip_tags(@$_POST['barcode']);
+                    $SKU_input = strip_tags(@$_POST['SKU']);
+                    $HSN_input = strip_tags(@$_POST['HSN']);
+                    $Unit_input = strip_tags(@$_POST['Unit']);
+                    $gst_input = strip_tags(@$_POST['gst']);
+                    $sell_unit_price = strip_tags(@$_POST['sell_unit_price']);
+                    $purchase_unit_price = strip_tags(@$_POST['purchase_unit_price']);
+                    $gross_unit_price = strip_tags(@$_POST['gross_unit_price']);
+                    $gst_unit_price = strip_tags(@$_POST['gst_unit_price']);
                     if ($name_input) {
-                        $query = "UPDATE `brands` SET `name`='$name_input' WHERE id='$id'";
+                        $query = "UPDATE `brands` SET `name`='$name_input', `model`='$model_input', `barcode`='$barcode_input', `SKU`='$SKU_input', `HSN`='$HSN_input', `Unit`='$Unit_input', `GST`='$gst_input', `S_Unit_Price`='$sell_unit_input', `P_Unit_Price`='$purchase_unit_price', `Gross`='$gross_unit_price', `Tax`='$gst_unit_price' WHERE id='$id'";
                         $result = mysqli_query($conn, $query);
                         echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-brands-manager.php?id=$id\">";
                     } else {
@@ -44,34 +65,162 @@ include_once("connection/header.php");
                 }
                 echo $report;
                 ?>
-                <p style='font-weight: 600; font-size: 18px; color: #555;'>Create Profile</p><br>
+                <p style='font-weight: 600; font-size: 18px; color: #555;'>Edit Sub Stock</p><br>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        // do not allow users to enter spaces:
+                        $(".username").on({
+                            keydown: function(event) {
+                                if (event.which === 32)
+                                    return false;
+                            },
+                            // if a space copied and pasted in the input field, replace it (remove it):
+                            change: function() {
+                                this.value = this.value.replace(/\s/g, "");
+                            }
+                        });
+                    });
+                </script>
                 <form action='#' method='POST'>
                     <div class='flex-container2'>
                         <div style='flex-grow: 1;'>
-                            <p style='font-weight: 300; font-size: 14px; color: #333;'>Brand Name</p>
-                            <input type='text' id='username' name="user_name" placeholder="Enter Brand Name" value="<?php echo $name; ?>" class="form_control" />
+                            <label class="checkbox-green">
+                                <input type="checkbox" name="sp_checker" value="service" id="myCheck" onclick="myFunction()">
+                                <span class="checkbox-green-switch" data-label-on="Service" data-label-off="Product"></span>
+                            </label>
+                            <br>
+                            <br>
+                            <p style='font-weight: 300; font-size: 14px; color: #333;'>Name</p>
+                            <input id="username" type='text' name="name" placeholder="Name" value="<?php echo $name_input; ?>" class="form_control" />
+                            <br><br>
+                            <p style='font-weight: 300; font-size: 14px; color: #333;'>Model Name</p>
+                            <input type='text' name="model" placeholder="Model Name" value="<?php echo $model_input; ?>" class="form_control" />
+                            <br><br>
+                            <p style='font-weight: 300; font-size: 14px; color: #333;'>Barcode</p>
+                            <input type='text' name="barcode" placeholder="Barcode" value="<?php echo $barcode_input; ?>" class="form_control" />
+                            <br><br>
+                            <p style='font-weight: 300; font-size: 14px; color: #333;'>SKU</p>
+                            <input type='text' name="SKU" placeholder="SKU" value="<?php echo $SKU_input; ?>" class="form_control" />
+                            <br><br>
+                            <div id="showoff" style="display:block">
+                                <p style='font-weight: 300; font-size: 14px; color: #333;'>HSN</p>
+                                <input type='text' name="HSN" placeholder="HSN" value="<?php echo $HSN_input; ?>" class="form_control" />
+                                <br><br>
+                                <p style='font-weight: 300; font-size: 14px; color: #333;'>Unit</p>
+                                <select name="Unit" class="form_control" />
+                                <option value="Select Unit">Select Unit</option>
+                                <option value="Kilogram">Kilogram</option>
+                                <option value="Gram">Gram</option>
+                                <option value="Pieces">Pieces</option>
+                                </select>
+                                <br><br>
+                            </div>
+                            <p style='font-weight: 300; font-size: 14px; color: #333;'>GST</p>
+                            <select name="gst" id="gst_data" class="form_control" onkeyup="keyupcalculate()" />
+                            <option value="<?php echo $gst_input; ?>">GST <?php echo $gst_input; ?>%</option>
+                            <option value="5">GST 5%</option>
+                            <option value="12">GST 12%</option>
+                            <option value="18">GST 18%</option>
+                            <option value="24">GST 24%</option>
+                            </select>
+                            <br><br>
+                            <hr style='height: 1px; background: #eee; border: 0 none;'>
+                            <br><br>
+                            <p style='font-weight: 300; font-size: 14px; color: #333;'>GST Type</p>
+                            <select name="gst" id="exc_inc" class="form_control" onclick="myFunction2()" />
+                            <option value="Excluded">Excluded</option>
+                            <option value="Included">Included</option>
+                            </select>
+                            <br><br>
+                            <p style='font-weight: 400; font-size: 18px; color: #333;'>Selling Info</p><br>
+                            <p style='font-weight: 300; font-size: 14px; color: #333;'>Unit Price</p>
+                            <input type='text' name="sell_unit_price" placeholder="Selling Unit Price" value="<?php echo $sell_unit_price; ?>" class="form_control" />
+                            <br><br>
+                            <hr style='height: 1px; background: #eee; border: 0 none;'>
+                            <br><br>
+                            <p style='font-weight: 400; font-size: 18px; color: #333;'>Purchase Info</p><br>
+                            <p style='font-weight: 300; font-size: 14px; color: #333;'>Unit Price</p>
+                            <input type='text' name="purchase_unit_price" placeholder="Purchase Unit Price" value="<?php echo $purchase_unit_price; ?>" id="purchase_unit_price" class="form_control" onkeyup="keyupcalculate()" />
+                            <br><br>
+
+                            <div style='width: 100%; border: 2px dashed #ccc;'>
+                                <div style='padding: 10px;'>
+                                    <p style='font-weight: 400; font-size: 18px; color: #333;'><i class="fas fa-calculator"></i> GST Calculator</p><br>
+                                    <br><br>
+                                    <p id="include_amt" style='font-weight: 300; font-size: 14px; color: #333;'>Gross Price</p>
+                                    <p id="exclude_amt" style='font-weight: 300; font-size: 14px; color: #333; display: none;'>Excluding GST</p>
+                                    <input type='text' name="ex_gst_unit_price" id="ex_gst_unit_price" placeholder="Calculating..." value="<?php echo $purchase_unit_price; ?>" class="form_control" />
+                                    <br><br>
+                                    <p style='font-weight: 300; font-size: 14px; color: #333;'>Extracted GST%</p>
+                                    <input type='text' name="gst_unit_price" id="gst_unit_price" placeholder="Calculating..." value="<?php echo $gst_unit_price; ?>" class="form_control" />
+                                    <br><br>
+                                    <p style='font-weight: 300; font-size: 14px; color: #333;'>Total Price</p>
+                                    <input type='text' name="gross_unit_price" id="gross_unit_price" placeholder="Calculating..." value="<?php echo $gross_unit_price; ?>" class="form_control" />
+                                    <br><br>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div style='padding: 10px;'>
-                        <input type='submit' name="update" value="Save Stock" class="form_control_submit" />
+                        <input type='submit' name="update" value="Generate Sub Stock" class="form_control_submit" />
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        // do not allow users to enter spaces:
-        $("#username").on({
-            keydown: function(event) {
-                if (event.which === 32)
-                    return false;
-            },
-            // if a space copied and pasted in the input field, replace it (remove it):
-            change: function() {
-                this.value = this.value.replace(/\s/g, "");
+    <script>
+        $(window).keyup(function(e) {
+            var target = $('.checkbox-green input:focus');
+            if (e.keyCode == 9 && $(target).length) {
+                $(target).parent().addClass('focused');
             }
         });
-    });
-</script>
+
+        $('.checkbox-green input').focusout(function() {
+            $(this).parent().removeClass('focused');
+        });
+
+        function myFunction() {
+            var checkBox = document.getElementById("myCheck");
+            var text = document.getElementById("showoff");
+            if (checkBox.checked == true) {
+                text.style.display = "none";
+            } else {
+                text.style.display = "block";
+            }
+        }
+
+
+
+        function keyupcalculate() {
+            var selection = document.getElementById("exc_inc");
+            if (selection.value == "Excluded") {
+                //included value here
+                var ex_gst = document.getElementById("ex_gst_unit_price");
+                var getGST = document.getElementById("gst_data");
+                var unitInput = document.getElementById("purchase_unit_price");
+                var grossInput = document.getElementById("gross_unit_price");
+                var gstInput = document.getElementById("gst_unit_price");
+                var amount = parseInt(getGST.value) / 100;
+                var extract = parseInt(unitInput.value) * amount;
+                grossInput.value = parseInt(unitInput.value) + extract;
+                gstInput.value = extract;
+                ex_gst.value = unitInput.value;
+                //end of included value
+            } else if (selection.value == "Included") {
+                //excluded value here
+                var ex_gst = document.getElementById("ex_gst_unit_price");
+                var getGST = document.getElementById("gst_data");
+                var unitInput = document.getElementById("purchase_unit_price");
+                var grossInput = document.getElementById("gross_unit_price");
+                var gstInput = document.getElementById("gst_unit_price");
+                var amount = parseInt(getGST.value) / 100;
+                var extract = parseInt(unitInput.value) * amount;
+                ex_gst.value = parseInt(unitInput.value) - extract;
+                gstInput.value = extract;
+                grossInput.value = unitInput.value;
+                //end of excluded value
+            }
+        }
+    </script>
