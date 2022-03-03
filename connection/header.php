@@ -20,7 +20,7 @@ if (isset($_SESSION['username'])) {
     <?php
     if ($user_type == "superadmin") {
     ?>
-        <center><img style="filter: brightness(0) invert(1);" src="images/wide-logo.svg" width="150px"></center><br><br><br>
+        <center><img style='padding: 10px; background: #fff; border-radius: 8px;' src="<?php echo $img_final; ?>" width="150px"></center><br><br><br>
         <a href='dashboard.php'><button class="sidebar_link"><i class="fas fa-tachometer-alt" style="padding-right: 15px;"></i> Dashboard</button></a>
         <br><br>
         <p style="font-weight: 600; margin-left: 30px; font-size: 12px; color: #dee2e6;">MANAGEMENT</p><br>
@@ -41,7 +41,7 @@ if (isset($_SESSION['username'])) {
     <?php
     } else if ($user_type == "storeadmin") {
     ?>
-        <center><img style="filter: brightness(0) invert(1);" src="images/wide-logo.svg" width="150px"></center><br><br><br>
+        <center><img style='padding: 10px; background: #fff; border-radius: 8px;' src="<?php echo $img_final; ?>" width="150px"></center><br><br><br>
         <a href='dashboard.php'><button class="sidebar_link"><i class="fas fa-tachometer-alt" style="padding-right: 15px;"></i> Dashboard</button></a>
         <br><br>
         <p style="font-weight: 600; margin-left: 30px; font-size: 12px; color: #dee2e6;">MANAGEMENT</p><br>

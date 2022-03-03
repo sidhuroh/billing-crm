@@ -14,6 +14,16 @@ body {
   border: 1px solid #eee;
   border-radius: 4px;
 }
+.centered-element {
+  height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.custom_flex_50 {
+  width: 50%;
+  float: left;
+}
 .login_area {
   float: left;
   width: 35%;
@@ -25,6 +35,13 @@ body {
   padding: 10px 5px;
   margin-top: 10px;
   border: 1px solid #eee;
+}
+.form_control1 {
+  width: 100%;
+  padding: 10px 5px;
+  margin-top: 10px;
+  border: 1px solid #eee;
+  resize: none;
 }
 .form_control_submit {
   padding: 10px;
@@ -390,7 +407,7 @@ body {
     rgba(0, 212, 255, 1) 100%
   );
 }
-.circle .left .progress { 
+.circle .left .progress {
   z-index: 1;
   animation: left 4s linear both;
 }
@@ -413,6 +430,15 @@ body {
   }
 }
 @media screen and (max-width: 800px) {
+  .custom_flex_50 {
+    width: 100%;
+  }
+  .centered-element {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .login_area {
     width: 100%;
   }

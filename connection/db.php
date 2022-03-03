@@ -19,6 +19,12 @@ if (isset($_SESSION['username'])) {
         if ($store_count == "") {
             $store_count = "0";
         }
+        $img = $row['logo_img'];
+        if ($img == "") {
+            $img_final = "images/wide-logo.svg";
+        } else {
+            $img_final = "data/" . $img;
+        }
     }
 } else {
     $user = "No User";

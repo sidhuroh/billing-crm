@@ -152,13 +152,13 @@ $stock_id = $_GET['id'];
                                     <br><br>
                                     <p id="include_amt" style='font-weight: 300; font-size: 14px; color: #333;'>Gross Price</p>
                                     <p id="exclude_amt" style='font-weight: 300; font-size: 14px; color: #333; display: none;'>Excluding GST</p>
-                                    <input type='text' name="ex_gst_unit_price" id="ex_gst_unit_price" placeholder="Calculating..." value="<?php echo $purchase_unit_price; ?>" class="form_control" />
+                                    <input type='text' name="ex_gst_unit_price" id="ex_gst_unit_price" placeholder="Calculating..." value="<?php echo $purchase_unit_price; ?>" class="form_control" disabled="disabled" />
                                     <br><br>
                                     <p style='font-weight: 300; font-size: 14px; color: #333;'>Extracted GST%</p>
-                                    <input type='text' name="gst_unit_price" id="gst_unit_price" placeholder="Calculating..." value="<?php echo $gst_unit_price; ?>" class="form_control" />
+                                    <input type='text' name="gst_unit_price" id="gst_unit_price" placeholder="Calculating..." value="<?php echo $gst_unit_price; ?>" class="form_control" disabled="disabled" />
                                     <br><br>
                                     <p style='font-weight: 300; font-size: 14px; color: #333;'>Total Price</p>
-                                    <input type='text' name="gross_unit_price" id="gross_unit_price" placeholder="Calculating..." value="<?php echo $gross_unit_price; ?>" class="form_control" />
+                                    <input type='text' name="gross_unit_price" id="gross_unit_price" placeholder="Calculating..." value="<?php echo $gross_unit_price; ?>" class="form_control" disabled="disabled" />
                                     <br><br>
                                 </div>
                             </div>

@@ -6,9 +6,10 @@ include_once("connection/header.php");
 <div style="background: #fff;">
     <div id="margin-setter2">
         <div style="padding: 20px;">
-            <f style='font-size: 18px; font-weight: 700; color: #555;'>Customers
+            <f style='font-size: 18px; font-weight: 700; color: #555;'><i class="fas fa-address-card"></i> Customers
             </f>
-            <a href='create-store-manager.php' style='float: right; margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; background: #1D6F42; border-radius: 4px; padding: 10px;'><i class="fas fa-file-excel"></i> &nbsp; Download CSV</a>
+            <a href='contacts.php' style='float: right; margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; background: #023e8a; border-radius: 4px; padding: 10px;'><i class="fas fa-address-card"></i> &nbsp; Create Contact</a>
+            <a href='create-store-manager.php' style='float: right; margin-left: 10px; text-decoration: none; font-weight: 700; color: #fff; background: #1D6F42; border-radius: 4px; padding: 10px;'><i class="fas fa-file-excel"></i> &nbsp; Download CSV</a>
             <br><a href='dashboard.php' style='text-decoration: none; color: #023e8a;'>Dasboard</a><i class="fas fa-angle-right" style='margin-left: 5px; margin-right: 5px; color: #7ec061;'></i>
             <a href='#' style='text-decoration: none; color: #023e8a;'>Customers</a>
         </div>

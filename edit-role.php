@@ -1,7 +1,20 @@
 <?php
 include_once("connection/header.php");
 ?>
+<?php
+$role_id = @$_GET['id'];
+$query = "SELECT * from users WHERE id = '$role_id'";
+$result = mysqli_query($conn, $query);
 
+while ($rows = mysqli_fetch_assoc($result)) {
+    $id = $rows['id'];
+    $name = $rows['user_name'];
+    $email = $rows['email'];
+    $phone = $rows['phone'];
+    $store_count = $rows['store_count'];
+    $author = $rows['author'];
+}
+?>
 <title>Dashboard - Edit Role | Billing</title>
 <div style="background: #fff;">
     <div id="margin-setter2">
@@ -18,20 +31,42 @@ include_once("connection/header.php");
     <div style='padding: 40px;'>
         <div style='background: #fff; margin-right: auto; margin-left: auto; max-width: 800px; border-radius: 8px; border: 2px solid #eee;'>
             <div style='padding: 20px;'>
-                <?php
-                $role_id = @$_GET['id'];
-                $query = "SELECT * from users WHERE id = '$role_id'";
-                $result = mysqli_query($conn, $query);
-
-                while ($rows = mysqli_fetch_assoc($result)) {
-                    $id = $rows['id'];
-                    $name = $rows['user_name'];
-                    $email = $rows['email'];
-                    $phone = $rows['phone'];
-                    $store_count = $rows['store_count'];
-                    $author = $rows['author'];
-                }
-                ?>
+                <p style='font-weight: 600; font-size: 18px; color: #555;'>Your Logo</p><br>
+                <div style='border: 2px dashed #ccc;'>
+                    <div style='padding: 20px;'>
+                        <?php
+                        $change = @$_POST['change'];
+                        if ($change) {
+                            if (((@$_FILES["img"]["type"] == "image/jpeg") || (@$_FILES["img"]["type"] == "image/png") || (@$_FILES["img"]["type"] == "image/gif")) && (@$_FILES["img"]["size"] < 10048576)) {
+                                $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                                $rand_dir_name = substr(str_shuffle($chars), 0, 15);
+                                mkdir("data/$rand_dir_name");
+                                if (file_exists("data/$rand_dir_name/" . @$_FILES['img']['name'])) {
+                                    $error = "Image Already Exists!";
+                                } else {
+                                    move_uploaded_file(@$_FILES['img']['tmp_name'], "data/$rand_dir_name/" . $_FILES['img']['name']);
+                                    $image_name = "$rand_dir_name/" . @$_FILES['img']['name'];
+                                    $sql = "UPDATE `users` SET `logo_img`='$image_name' WHERE id='$id'";
+                                    $query = mysqli_query($conn, $sql);
+                                    echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-role.php?id=$id\">";
+                                }
+                            }
+                        }
+                        ?>
+                        <center><img src='<?php echo $img_final; ?>' width="180px" style='padding: 10px; border: 1px solid #eee;'>
+                            <form action="#" method="POST" enctype='multipart/form-data'>
+                                <input type="file" name="img" style="padding: 10px; border: 1px dashed #023e8a; margin-top: 10px;">
+                                <br><br>
+                                <input type='submit' name="change" value="Change Logo" class="form_control_submit" />
+                            </form>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div style='background: #fff; margin-right: auto; margin-left: auto; max-width: 800px; border-radius: 8px; border: 2px solid #eee;'>
+            <div style='padding: 20px;'>
                 <?php
                 if ($user_type == "superadmin") {
                 ?>

@@ -69,7 +69,7 @@ include_once("connection/header.php");
             <?php
             $report = @$_GET['delete_report'];
             if ($report == "1") {
-                echo $report = "<p style='margin-bottom: 10px; border-radius: 4px; color: #fff; background: #ff006e; padding: 10px;'>Store Has Been Successfully Deleted!</p>";
+                echo $report = "<p style='margin-bottom: 10px; border-radius: 4px; color: #fff; background: #ff006e; padding: 10px;'>Invoice Has Been Successfully Deleted!</p>";
             }
             $report;
             ?>
@@ -103,9 +103,9 @@ include_once("connection/header.php");
                 ?>
                     <script>
                         function show_alert<?php echo $id; ?>() {
-                            var check = confirm("Are you sure you want to delete <?php echo $store_name; ?>?");
+                            var check = confirm("Are you sure you want to delete <?php echo $invoice_id; ?>?");
                             if (check == true) {
-                                window.location = "delete-store-manager.php?id=<?php echo $id ?>";
+                                window.location = "delete-invoice.php?id=<?php echo $id ?>";
                             } else {
                                 //Do Nothing!
                             }
@@ -113,9 +113,9 @@ include_once("connection/header.php");
                     </script>
                     <script>
                         function show_alert2<?php echo $id; ?>() {
-                            var check = confirm("Are you sure you want to switch status of <?php echo $store_name; ?>?");
+                            var check = confirm("Are you sure you want to switch status of <?php echo $invoice_id; ?>?");
                             if (check == true) {
-                                window.location = "switch-store-manager.php?id=<?php echo $id ?>";
+                                window.location = "switch-delete.php?id=<?php echo $id ?>";
                             } else {
                                 //Do Nothing!
                             }

@@ -108,7 +108,7 @@ if ($user_type == "superadmin") {
                         <lord-icon src="https://cdn.lordicon.com/qhviklyi.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:80px;height:80px; float: left;">
                         </lord-icon>
                         <f style='font-size: 16px; margin-left: 20px; font-weight: 700;'>Total Sales</f><br>
-                        <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'></p>
+                        <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'>₹0</p>
                     </div>
                 </div>
                 <div>

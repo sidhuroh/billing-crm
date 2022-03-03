@@ -36,7 +36,7 @@ while ($row = mysqli_fetch_array($query)) {
                 <div class='flex-container2'>
                     <div style='flex: 33.3%;'>
                         <p style='font-size: 21px; font-weight: 700; color: #444;'>From,</p><br>
-                        <img src='images/wide-logo.svg' width='150px'>
+                        <img src='<?php echo $img_final; ?>' width='150px'>
                         <br><br>
                         <p style='font-size: 14px; color: #333;'><?php echo $user_name; ?></p>
                         <p style='font-size: 14px; color: #333;'><?php echo $user; ?></p>
@@ -67,7 +67,7 @@ while ($row = mysqli_fetch_array($query)) {
                                     ?>
                                 </select></label>
 
-                            <a href='add-customer.php' style='color: #023e8a; float: right; padding: 5px; text-decoration: none; font-size: 12px;'>+New Customer</a>
+                            <a href='contacts.php' style='color: #023e8a; float: right; padding: 5px; text-decoration: none; font-size: 12px;'>+New Customer</a>
                         </div>
                     </div>
                     <div style='flex: 33.3%; border-left: 1px solid #eee;'>
