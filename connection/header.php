@@ -45,11 +45,12 @@ if (isset($_SESSION['username'])) {
         <a href='dashboard.php'><button class="sidebar_link"><i class="fas fa-tachometer-alt" style="padding-right: 15px;"></i> Dashboard</button></a>
         <br><br>
         <p style="font-weight: 600; margin-left: 30px; font-size: 12px; color: #dee2e6;">MANAGEMENT</p><br>
-        <a href='store-manager.php'><button class="sidebar_link"><i class="fas fa-users" style="padding-right: 15px;"></i> Stores</button><br></a>
-        <a href='role-manager.php'><button class="sidebar_link"><i class="fas fa-users" style="padding-right: 15px;"></i> Stores Managers</button><br></a>
-        <a href='stocks-manager.php'><button class="sidebar_link"><i class="fas fa-users" style="padding-right: 15px;"></i> Stocks</button><br></a>
-        <a href='customers.php'><button class="sidebar_link"><i class="fas fa-users" style="padding-right: 15px;"></i> Customers</button><br></a>
-        <a href='invoice-manager.php'><button class="sidebar_link"><i class="fas fa-users" style="padding-right: 15px;"></i> Invoices</button><br></a>
+        <a href='store-manager.php'><button class="sidebar_link"><i class="fas fa-store" style="padding-right: 15px;"></i> Stores</button><br></a>
+        <a href='role-manager.php'><button class="sidebar_link"><i class="fas fa-tasks" style="padding-right: 15px;"></i> Stores Managers</button><br></a>
+        <a href='stocks-manager.php'><button class="sidebar_link"><i class="fas fa-box" style="padding-right: 15px;"></i> Stocks</button><br></a>
+        <a href='customers.php'><button class="sidebar_link"><i class="fas fa-address-card" style="padding-right: 15px;"></i> Customers</button><br></a>
+        <a href='invoice-manager.php'><button class="sidebar_link"><i class="fas fa-receipt" style=" padding-right: 15px;"></i> Invoices</button><br></a>
+        <a href='coupon-manager.php'><button class="sidebar_link"><i class="fab fa-buffer" style="padding-right: 15px;"></i> Coupon Code</button><br></a>
         <br><br>
         <p style="font-weight: 600; margin-left: 30px; font-size: 12px; color: #dee2e6;">General</p><br>
         <button class="sidebar_link" onclick="sidebar()"><i class="fas fa-cogs" style="padding-right: 15px;"></i> Settings</button>

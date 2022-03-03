@@ -7,7 +7,8 @@ $stock_id = $_GET['id'];
 <div style="background: #fff;">
     <div id="margin-setter2">
         <div style="padding: 20px;">
-            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Add Sub Stocks</f>
+            <f style='font-size: 18px; font-weight: 700; color: #555;'>Edit Sub Stock</f>
+
         </div>
     </div>
     <div style='clear: both;'></div>

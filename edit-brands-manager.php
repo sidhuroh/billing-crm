@@ -7,7 +7,10 @@ $stock_id = $_GET['id'];
 <div style="background: #fff;">
     <div id="margin-setter2">
         <div style="padding: 20px;">
-            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Edit Sub Stocks</f>
+            <f style='font-size: 18px; font-weight: 700; color: #555;'>Brands Manager</f>
+            <br><a href='dashboard.php' style='text-decoration: none; color: #023e8a;'>Dasboard</a><i class="fas fa-angle-right" style='margin-left: 5px; margin-right: 5px; color: #7ec061;'></i>
+            <a href='stocks-manager.php' style='text-decoration: none; color: #023e8a;'>Stocks Manager</a><i class="fas fa-angle-right" style='margin-left: 5px; margin-right: 5px; color: #7ec061;'></i>
+            <a href='#' style='text-decoration: none; color: #023e8a;'>Edit</a>
         </div>
     </div>
     <div style='clear: both;'></div>
