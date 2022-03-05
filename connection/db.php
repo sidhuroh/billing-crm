@@ -30,4 +30,5 @@ if (isset($_SESSION['username'])) {
     $user = "No User";
 }
 ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://unpkg.com/darkreader@4.9.44/darkreader.js"></script>
+<script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

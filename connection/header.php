@@ -1,4 +1,5 @@
 <?php include_once('db.php'); ?>
+
 <!DOCTYPE html>
 <?php
 if (isset($_SESSION['username'])) {
@@ -12,55 +13,111 @@ if (isset($_SESSION['username'])) {
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<link rel="stylesheet" href="css/jquery-ui.theme.css">
 <script src="https://kit.fontawesome.com/318618787a.js" crossorigin="anonymous"></script>
 <link rel="shortcut icon" href="./images/logo.svg" type="image/x-icon" />
 <div class="sidebar" id="sidebar_toggle">
     <button id="hide_btn2" class="desktop_hide" style="background: transparent; float: left;  border: 0px none; color: #1b3a4b; padding: 5px; margin-top: 5px; margin: 10px; float: right;" onclick="panel1()"><i class="fas fa-bars" style="font-size: 18px; "></i></button>
-    <br><br><br>
+    <br><br>
     <?php
     if ($user_type == "superadmin") {
     ?>
-        <center><img style='padding: 10px; background: #fff; border-radius: 8px;' src="<?php echo $img_final; ?>" width="150px"></center><br><br><br>
-        <a href='dashboard.php'><button class="sidebar_link"><i class="fas fa-tachometer-alt" style="padding-right: 15px;"></i> Dashboard</button></a>
-        <br><br>
-        <p style="font-weight: 600; margin-left: 30px; font-size: 12px; color: #dee2e6;">MANAGEMENT</p><br>
-        <a href='role-manager.php'><button class="sidebar_link"><i class="fas fa-users" style="padding-right: 15px;"></i> Set Roles</button><br></a>
-        <button class="sidebar_link" onclick="panel3()"><i class="fas fa-star" style="padding-right: 15px;"></i> Membership</button>
-        <br><br>
-        <p style="font-weight: 600; margin-left: 30px; font-size: 12px; color: #dee2e6;">General</p><br>
-        <button class="sidebar_link" onclick="sidebar()"><i class="fas fa-cogs" style="padding-right: 15px;"></i> Settings</button>
-        <div id="more_settings" style="display: none;">
-            <a href='edit-role.php?id=<?php echo $user_id; ?>'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Profile Update</button></a>
-            <a href='currencies-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Currencies</button></a>
-            <a href='units-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Units</button></a>
-            <a href='gst-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> GST</button></a>
-            <a href='taxes-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Taxes</button></a>
-            <a href='states-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> States</button></a>
+        <div style="margin-left: auto; margin-right: auto; width: 80%; padding: 20px;">
+            <img src="images/logo.svg" style="background: #fff; border: 1px solid #eee; border-radius: 8px; float: left; margin-right: 10px;" width="40px">
+            <p style="font-weight: 700; float: left; margin-top: 5px;"><?php echo $user_name; ?></p><br>
+            <p style="font-weight: 400; text-transform: capitalize; margin-top: 5px; color: #888; "><?php echo $user_type; ?></p>
+            <br>
+            <br>
+            <form action="#" method="GET">
+                <input type="text" name="q" placeholder="Search" class="search_sidebar">
+            </form>
+            <center>
+                <?php
+                $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
+                if ($curPageName == 'dashboard.php') {
+                    echo '<a href="dashboard.php"><button class="sidebar_link" style="color: #fff; background: #0874f0; color: #fff; padding-left: 10px; border-radius: 10px;"><i class="fas fa-tachometer-alt" style="padding-right: 15px; color: #fff;"></i> Dashboard</button></a>';
+                } else {
+                    echo '<a href="dashboard.php"><button class="sidebar_link"><i class="fas fa-tachometer-alt" style="padding-right: 15px; color: #888;"></i> Dashboard</button></a>';
+                }
+                ?>
+
+                <br>
+                <hr style="background: #eee; border: 0 none; height: 1px; margin-top: 10px; margin-bottom: 10px;">
+                <br>
+            </center>
+            <p style="font-weight: 400; font-size: 12px; color: #888;">Management</p><br>
+            <center>
+                <a href='role-manager.php'><button class="sidebar_link"><i class="fas fa-users" style="padding-right: 15px;"></i> Set Roles</button><br></a>
+                <button class="sidebar_link" onclick="panel3()"><i class="fas fa-star" style="padding-right: 15px;"></i> Membership</button>
+                <br>
+                <hr style="background: #eee; border: 0 none; height: 1px; margin-top: 10px; margin-bottom: 10px;">
+                <br>
+            </center>
+            <p style="font-weight: 400; font-size: 12px; color: #888;">General</p><br>
+            <center>
+                <button class="sidebar_link" onclick="sidebar()"><i class="fas fa-cogs" style="padding-right: 15px;"></i> Settings</button>
+                <div id="more_settings" style="display: none;">
+                    <a href='edit-role.php?id=<?php echo $user_id; ?>'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Profile Update</button></a>
+                    <a href='currencies-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Currencies</button></a>
+                    <a href='units-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Units</button></a>
+                    <a href='gst-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> GST</button></a>
+                    <a href='taxes-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Taxes</button></a>
+                    <a href='states-config.php'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> States</button></a>
+                </div>
+                <a href='logout.php'><button class="sidebar_link"><i class="fas fa-power-off" style="padding-right: 15px;"></i> Logout</button></a>
+                <center>
         </div>
-        <a href='logout.php'><button class="sidebar_link"><i class="fas fa-power-off" style="padding-right: 15px;"></i> Logout</button></a>
+
     <?php
     } else if ($user_type == "storeadmin") {
     ?>
-        <center><img style='padding: 10px; background: #fff; border-radius: 8px;' src="<?php echo $img_final; ?>" width="150px"></center><br><br><br>
-        <a href='dashboard.php'><button class="sidebar_link"><i class="fas fa-tachometer-alt" style="padding-right: 15px;"></i> Dashboard</button></a>
-        <br><br>
-        <p style="font-weight: 600; margin-left: 30px; font-size: 12px; color: #dee2e6;">MANAGEMENT</p><br>
-        <a href='store-manager.php'><button class="sidebar_link"><i class="fas fa-store" style="padding-right: 15px;"></i> Stores</button><br></a>
-        <a href='role-manager.php'><button class="sidebar_link"><i class="fas fa-tasks" style="padding-right: 15px;"></i> Stores Managers</button><br></a>
-        <a href='stocks-manager.php'><button class="sidebar_link"><i class="fas fa-box" style="padding-right: 15px;"></i> Stocks</button><br></a>
-        <a href='customers.php'><button class="sidebar_link"><i class="fas fa-address-card" style="padding-right: 15px;"></i> Customers</button><br></a>
-        <a href='invoice-manager.php'><button class="sidebar_link"><i class="fas fa-receipt" style=" padding-right: 15px;"></i> Invoices</button><br></a>
-        <a href='coupon-manager.php'><button class="sidebar_link"><i class="fab fa-buffer" style="padding-right: 15px;"></i> Coupon Code</button><br></a>
-        <br><br>
-        <p style="font-weight: 600; margin-left: 30px; font-size: 12px; color: #dee2e6;">General</p><br>
-        <button class="sidebar_link" onclick="sidebar()"><i class="fas fa-cogs" style="padding-right: 15px;"></i> Settings</button>
-        <div id="more_settings" style="display: none;">
-            <a href='#'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Store Details</button></a>
-            <a href='edit-role.php?id=<?php echo $user_id; ?>'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Profile Update</button></a>
-        </div>
-        <a href='logout.php'><button class="sidebar_link"><i class="fas fa-power-off" style="padding-right: 15px;"></i> Logout</button></a>
-        <br><br>
+        <div style="margin-left: auto; margin-right: auto; width: 80%; padding: 20px;">
+            <img src="images/logo.svg" style="background: #fff; border: 1px solid #eee; border-radius: 8px; float: left; margin-right: 10px;" width="40px">
+            <p style="font-weight: 700; float: left; margin-top: 5px;"><?php echo $user_name; ?></p><br>
+            <p style="font-weight: 400; text-transform: capitalize; margin-top: 5px; color: #888; "><?php echo $user_type; ?></p>
+            <br>
+            <br>
+            <form action="#" method="GET">
+                <input type="text" name="q" placeholder="Search" class="search_sidebar">
+            </form>
+            <center>
+                <?php
+                $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
+                if ($curPageName == 'dashboard.php') {
+                    echo '<a href="dashboard.php"><button class="sidebar_link" style="color: #fff; background: #0874f0; color: #fff; padding-left: 10px; border-radius: 10px;"><i class="fas fa-tachometer-alt" style="padding-right: 15px; color: #fff;"></i> Dashboard</button></a>';
+                } else {
+                    echo '<a href="dashboard.php"><button class="sidebar_link"><i class="fas fa-tachometer-alt" style="padding-right: 15px; color: #888;"></i> Dashboard</button></a>';
+                }
+                ?>
 
+            </center>
+            <br>
+            <hr style="background: #eee; border: 0 none; height: 1px; margin-top: 10px; margin-bottom: 10px;">
+            <br>
+            <p style="font-weight: 400; font-size: 12px; color: #888;">Management</p><br>
+            <center>
+                <a href='store-manager.php'><button class="sidebar_link"><i class="fas fa-store" style="padding-right: 15px;"></i> Stores</button><br></a>
+                <a href='role-manager.php'><button class="sidebar_link"><i class="fas fa-tasks" style="padding-right: 15px;"></i> Stores Managers</button><br></a>
+                <a href='stocks-manager.php'><button class="sidebar_link"><i class="fas fa-box" style="padding-right: 15px;"></i> Stocks</button><br></a>
+                <a href='customers.php'><button class="sidebar_link"><i class="fas fa-address-card" style="padding-right: 15px;"></i> Customers</button><br></a>
+                <a href='invoice-manager.php'><button class="sidebar_link"><i class="fas fa-receipt" style=" padding-right: 15px;"></i> Invoices</button><br></a>
+                <a href='coupon-manager.php'><button class="sidebar_link"><i class="fab fa-buffer" style="padding-right: 15px;"></i> Coupon Code</button><br></a>
+                <br>
+                <hr style="background: #eee; border: 0 none; height: 1px; margin-top: 10px; margin-bottom: 10px;">
+                <br>
+
+            </center>
+            <p style="font-weight: 400; font-size: 12px; color: #888;">General</p><br>
+            <center>
+                <button class="sidebar_link" onclick="sidebar()"><i class="fas fa-cogs" style="padding-right: 15px;"></i> Settings</button>
+                <div id="more_settings" style="display: none;">
+                    <a href='#'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Store Details</button></a>
+                    <a href='edit-role.php?id=<?php echo $user_id; ?>'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Profile Update</button></a>
+                </div>
+                <a href='logout.php'><button class="sidebar_link"><i class="fas fa-power-off" style="padding-right: 15px;"></i> Logout</button></a>
+                <br><br>
+        </div>
     <?php
     }
     ?>

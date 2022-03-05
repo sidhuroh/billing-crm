@@ -59,7 +59,7 @@ body {
 }
 .invoice_input {
   border: 1px solid #fff;
-  padding: 5px;
+  padding: 10px 5px;
   background: #fff;
   font-size: 12px;
   border-radius: 4px;
@@ -76,9 +76,10 @@ body {
 }
 .invoice_input_times {
   border: 1px solid #ec255a;
-  padding: 5px;
+  padding: 10px 15px;
   background: #ec255a;
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 700;
   border-radius: 4px;
   outline: none;
   color: #fff;
@@ -145,52 +146,70 @@ body {
   color: #023e8a;
   font-size: 16px;
 }
+.search_sidebar {
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px;
+  border: 2px solid #eee;
+  background: #f1f1f1;
+  outline: none;
+  margin-bottom: 10px;
+}
 .sidebar_link {
   width: 100%;
-  color: #fff;
-  font-size: 13.5px;
-  background: #101d42;
+  color: #444;
+  font-size: 14px;
+  background: #fff;
   padding-top: 15px;
   padding-bottom: 15px;
-  border: 1px solid #101d42;
+  border: 0px solid #fff;
   font-weight: 400;
   transition: all 0.5s;
   text-align: left;
-  padding-left: 30px;
-  font-family: Roboto-Medium;
+  font-family: Roboto;
   outline: none;
+  padding-left: 0px;
 }
+
 .sidebar_link2 {
   width: 100%;
-  color: #fff;
+  color: #444;
   font-size: 13.5px;
-  background: #101d42;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  border: 1px solid #101d42;
+  background: #fff;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 1px solid #fff;
   font-weight: 400;
   transition: all 0.5s;
   text-align: left;
-  padding-left: 40px;
   font-family: Roboto-Medium;
   outline: none;
+  padding-left: 0px;
 }
-.sidebar_link:hover,
-.sidebar_link2:hover {
-  background: #232ed1;
-  border: 1px solid #232ed1;
-}
+
 .sidebar {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
   z-index: 1000;
   width: 20%;
   overflow-y: auto;
   height: 100%;
-  background: #101d42;
+  background: #fff;
   position: fixed;
-  box-shadow: 16px 14px 38px -15px rgba(74, 74, 74, 0.63);
-  -webkit-box-shadow: 16px 14px 38px -15px rgba(74, 74, 74, 0.63);
-  -moz-box-shadow: 16px 14px 38px -15px rgba(74, 74, 74, 0.63);
+  -webkit-box-shadow: 0px 2px 27px -4px rgba(136, 136, 136, 0.69);
+  -moz-box-shadow: 0px 2px 27px -4px rgba(136, 136, 136, 0.69);
+  box-shadow: 0px 2px 27px -4px rgba(136, 136, 136, 0.69);
 }
+
+.sidebar_link:hover,
+.sidebar_link2:hover {
+  background: #0874f0;
+  border: 1px solid #0874f0;
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+}
+
 #margin-setter,
 #margin-setter2,
 #margin-setter3 {
@@ -217,6 +236,23 @@ body {
   vertical-align: middle;
   font-size: 14px;
   user-select: none;
+}
+.invoice_inp {
+  width: 100%;
+  padding: 10px;
+  background: #f1f1f1 !important;
+  border: 2px solid #eee;
+  outline: none;
+  border-radius: 8px;
+  margin-top: 5px;
+  transition: background-color 3s cubic-bezier(0, 1, 0.5, 1);
+}
+.invoice_inp:focus {
+  width: 100%;
+  padding: 10px;
+  background: #ffffff;
+  border: 2px solid #eee;
+  outline: none;
 }
 .checkbox-green .checkbox-green-switch {
   display: inline-block;
@@ -373,7 +409,7 @@ body {
   z-index: 10;
   font-size: 18px;
   font-weight: 500;
-  color: #4158d0;
+  color: #333;
 }
 .circular .number2 {
   position: absolute;
@@ -383,7 +419,7 @@ body {
   z-index: 10;
   font-size: 18px;
   font-weight: 500;
-  color: #4158d0;
+  color: #333;
 }
 .circular .bar {
   position: absolute;
@@ -399,13 +435,7 @@ body {
   width: 100%;
   -webkit-border-radius: 100%;
   clip: rect(0px, 50px, 100px, 0px);
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
-  );
+  background: #0874f0;
 }
 .circle .left .progress {
   z-index: 1;
@@ -463,11 +493,11 @@ body {
   .sidebar {
     width: 300px;
     height: 100%;
-    background: #101d42;
+    background: #fff;
     position: fixed;
-    box-shadow: 16px 14px 38px -15px rgba(74, 74, 74, 0.63);
-    -webkit-box-shadow: 16px 14px 38px -15px rgba(74, 74, 74, 0.63);
-    -moz-box-shadow: 16px 14px 38px -15px rgba(74, 74, 74, 0.63);
+    -webkit-box-shadow: 0px 2px 27px -4px rgba(136, 136, 136, 0.69);
+    -moz-box-shadow: 0px 2px 27px -4px rgba(136, 136, 136, 0.69);
+    box-shadow: 0px 2px 27px -4px rgba(136, 136, 136, 0.69);
   }
   #margin-setter,
   #margin-setter2,

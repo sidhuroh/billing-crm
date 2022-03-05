@@ -114,7 +114,7 @@ if ($user_type == "superadmin") {
                 <div>
                     <div style='padding: 15px;'>
                         <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
-                        <lord-icon src="https://cdn.lordicon.com/dqkyqxlp.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:80px;height:80px; float: left;">
+                        <lord-icon src="https://cdn.lordicon.com/dqkyqxlp.json" trigger="loop" colors="primary:#121331,secondary:#D82148" style="width:80px;height:80px; float: left;">
                         </lord-icon>
                         <f style='font-size: 16px; margin-left: 20px; font-weight: 700;'>Number Of Store's</f><br>
                         <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'>
@@ -131,7 +131,7 @@ if ($user_type == "superadmin") {
                 <div>
                     <div style='padding: 15px;'>
                         <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
-                        <lord-icon src="https://cdn.lordicon.com/rgyftmhc.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:80px;height:80px; float: left;">
+                        <lord-icon src="https://cdn.lordicon.com/rgyftmhc.json" trigger="loop" colors="primary:#121331,secondary:#9ADCFF" style="width:80px;height:80px; float: left;">
                         </lord-icon>
                         <f style='font-size: 16px; margin-left: 20px; font-weight: 700;'>Stocks</f><br>
                         <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'><?php
@@ -145,7 +145,7 @@ if ($user_type == "superadmin") {
                 <div>
                     <div style='padding: 15px;'>
                         <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
-                        <lord-icon src="https://cdn.lordicon.com/nocovwne.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:80px;height:80px; float: left;">
+                        <lord-icon src="https://cdn.lordicon.com/nocovwne.json" trigger="loop" colors="primary:#121331,secondary:#FFD32D" style="width:80px;height:80px; float: left;">
                         </lord-icon>
                         <f style='font-size: 16px; margin-left: 20px; font-weight: 700;'>Customers</f><br>
                         <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'>
@@ -162,7 +162,7 @@ if ($user_type == "superadmin") {
             </div>
             <div class='flex-container'>
                 <div>
-                    <div style="padding: 40px;">
+                    <div style="padding: 40px; border-bottom: 5px solid #019267;">
                         <center>
                             <h2 style='color: #333; font-size: 20px;'>Sales Today</h2><br>
                         </center>
@@ -171,17 +171,17 @@ if ($user_type == "superadmin") {
                             <div class="number">0</div>
                             <div class="circle">
                                 <div class="bar left">
-                                    <div class="progress"></div>
+                                    <div class="progress" style="background: #019267;"></div>
                                 </div>
                                 <div class="bar right">
-                                    <div class="progress"></div>
+                                    <div class="progress" style="background: #019267;"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div style="padding: 40px;">
+                    <div style="padding: 40px; border-bottom: 5px solid #FFD32D;">
                         <center>
                             <h2 style='color: #333; font-size: 20px;'>Weekly</h2><br>
                         </center>
@@ -190,17 +190,17 @@ if ($user_type == "superadmin") {
                             <div class="number2">0</div>
                             <div class="circle">
                                 <div class="bar left">
-                                    <div class="progress"></div>
+                                    <div class="progress" style="background: #FFD32D;"></div>
                                 </div>
                                 <div class="bar right">
-                                    <div class="progress"></div>
+                                    <div class="progress" style="background: #FFD32D;"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div style="padding: 40px;">
+                    <div style="padding: 40px;  border-bottom: 5px solid #F76E11;">
                         <center>
                             <h2 style='color: #333; font-size: 20px;'>Month</h2><br>
                         </center>
@@ -209,17 +209,17 @@ if ($user_type == "superadmin") {
                             <div class="number">0</div>
                             <div class="circle">
                                 <div class="bar left">
-                                    <div class="progress"></div>
+                                    <div class="progress" style="background: #F76E11;"></div>
                                 </div>
                                 <div class="bar right">
-                                    <div class="progress"></div>
+                                    <div class="progress" style="background: #F76E11;"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div style="padding: 40px;">
+                    <div style="padding: 40px; border-bottom: 5px solid #D82148;">
                         <center>
                             <h2 style='color: #333; font-size: 20px;'>Yearly</h2><br>
                         </center>
@@ -228,10 +228,10 @@ if ($user_type == "superadmin") {
                             <div class="number">0</div>
                             <div class="circle">
                                 <div class="bar left">
-                                    <div class="progress"></div>
+                                    <div class="progress" style="background: #D82148;"></div>
                                 </div>
                                 <div class="bar right">
-                                    <div class="progress"></div>
+                                    <div class="progress" style="background: #D82148;"></div>
                                 </div>
                             </div>
                         </div>
@@ -243,25 +243,48 @@ if ($user_type == "superadmin") {
         ?>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
         <script>
-            const numb = document.querySelector(".number");
-            let counter = 0;
-            setInterval(() => {
-                if (counter == 0) {
-                    clearInterval();
-                } else {
-                    counter += 50;
-                    numb.textContent = counter + "₹";
-                }
-            }, 120);
-
-            const numb2 = document.querySelector(".number2");
-            let counter2 = 0;
-            setInterval(() => {
-                if (counter2 == 0) {
-                    clearInterval();
-                } else {
-                    counter2 += 200;
-                    numb.textContent = counter + "₹";
-                }
-            }, 120);
+            $(document).ready(function() {
+                var count = 0;
+                var counting = setInterval(function() {
+                    if (count < 101) {
+                        $('.number').text(count);
+                        count++
+                    } else {
+                        clearInterval(counting)
+                    }
+                }, 10);
+            });
+            $(document).ready(function() {
+                var count = 0;
+                var counting = setInterval(function() {
+                    if (count < 101) {
+                        $('.number2').text(count + '%');
+                        count++
+                    } else {
+                        clearInterval(counting)
+                    }
+                }, 10);
+            });
+            $(document).ready(function() {
+                var count = 0;
+                var counting = setInterval(function() {
+                    if (count < 101) {
+                        $('.number').text(count + '%');
+                        count++
+                    } else {
+                        clearInterval(counting)
+                    }
+                }, 10);
+            });
+            $(document).ready(function() {
+                var count = 0;
+                var counting = setInterval(function() {
+                    if (count < 101) {
+                        $('.number').text(count + '%');
+                        count++
+                    } else {
+                        clearInterval(counting)
+                    }
+                }, 10);
+            });
         </script>

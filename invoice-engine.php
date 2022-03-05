@@ -10,6 +10,7 @@ while ($row = mysqli_fetch_array($query)) {
     $date = $row['invoice_date'];
 }
 ?>
+
 <title>Dashboard - Invoice | Billing</title>
 <div style="background: #fff;">
     <div id="margin-setter2">
