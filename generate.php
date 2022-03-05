@@ -118,19 +118,33 @@ while ($row = mysqli_fetch_array($query)) {
                         <th>Total</th>
                         <th></th>
                     </tr>
-                    <script type="text/javascript">
-                        $(document).ready(function() {
-                            var html = '<tr><td><input type="text" name="city[]" list="cityname[]" class="invoice_input"><datalist id="cityname[]">' + '<?php $query = "SELECT * FROM brands WHERE admin='$user'";
-                                                                                                                                                        $sql = mysqli_query($conn, $query);
-                                                                                                                                                        while ($row = mysqli_fetch_assoc($sql)) {
-                                                                                                                                                            $name = $row['name'];
-                                                                                                                                                            $barcode = $row['barcode'];
-                                                                                                                                                            echo "<option value=$name>$barcode</option>";
-                                                                                                                                                        } ?>' + '</datalist></td><td><input type="text" name="price[]" class="invoice_input" value="250"></td><td><input type="text" name="discount[]" class="invoice_input" value="5%"></td><td><input type="text" name="tax[]" class="invoice_input" value="5%"></td><td><input type="text" name="amount[]" class="invoice_input" value="100"></td><td><input type="button" id="remove" class="invoice_input_times" value="-"></td>';
 
+
+
+                    <script type="text/javascript">
+                        function auto_str(str) {
+                            if (window.XMLHttpRequest) {
+                                xmlhttp = new XMLHttpRequest();
+                            } else {
+                                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                            }
+                            xmlhttp.onreadystatechange = function() {
+                                document.getElementById('product[]').value = this.responseText;
+                            }
+                            xmlhttp.open("GET", "controller.php?value=" + str, true);
+                            xmlhttp.send();
+                        }
+                        $(document).ready(function() {
+                            var html = '<tr><td><input type="text" name="city[]" list="cityname[]" class="invoice_input" onchange="auto_str(this.value);"><datalist id="cityname[]">' + '<?php $query = "SELECT * FROM brands WHERE admin='$user'";
+                                                                                                                                                                                            $sql = mysqli_query($conn, $query);
+                                                                                                                                                                                            while ($row = mysqli_fetch_assoc($sql)) {
+                                                                                                                                                                                                $id = $row['id'];
+                                                                                                                                                                                                $name = $row['name'];
+                                                                                                                                                                                                $barcode = $row['barcode'];
+                                                                                                                                                                                                echo "<option value=$id>$name</option>";
+                                                                                                                                                                                            } ?>' + '</datalist></td><td><input type="text" id="product[]" name="price[]" class="invoice_input" value=""></td><td><input type="text" name="discount[]" class="invoice_input" value="5%"></td><td><input type="text" name="tax[]" class="invoice_input" value="5%"></td><td><input type="text" name="amount[]" class="invoice_input" value="100"></td><td><input type="button" id="remove" class="invoice_input_times" value="-"></td>';
                             var max = 5;
                             var x = 1;
-
                             $('#add_more').click(function() {
                                 $("#customers").append(html);
                                 x++;
