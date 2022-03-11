@@ -24,6 +24,66 @@ body {
   width: 50%;
   float: left;
 }
+
+#swatch {
+  background: white;
+  display: flex;
+  border: 1px solid #eee;
+  flex-direction: column;
+  width: 100px;
+}
+
+#swatch .info {
+  padding: 10px;
+}
+
+#swatch h1 {
+  margin: 0;
+  font-size: 12px;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
+#swatch h2 {
+  font-weight: normal;
+  margin: 0;
+}
+
+input[type="color"] {
+  border-radius: 10px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  height: 40px;
+  padding: 0;
+  width: 100%;
+}
+
+*:focus {
+  border-radius: 10px;
+  outline: none;
+}
+
+::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+::-webkit-color-swatch {
+  border: 0;
+  border-radius: 0;
+}
+
+::-moz-color-swatch,
+::-moz-focus-inner {
+  border: 0;
+}
+
+::-moz-focus-inner {
+  padding: 0;
+}
 .login_area {
   float: left;
   width: 35%;
@@ -341,12 +401,38 @@ body {
   box-shadow: inset 0px 0px 4px #ff5623;
 }
 .generate_invoice_btn {
+  font-family: FontAwesome, "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 15px;
   font-weight: 500;
   color: #333;
   background: #eee;
   border: 1px solid #eee;
   border-radius: 8px;
+}
+.generate_invoice {
+  padding: 15px 20px;
+  font-weight: 500;
+  color: #fff;
+  transition: all 0.5s;
+  background: #0e185f;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.generate_invoice2 {
+  padding: 15px 20px;
+  font-weight: 500;
+  color: #fff;
+  transition: all 0.5s;
+  background: #54ae93;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.generate_invoice2:hover,
+.generate_invoice:hover {
+  background: #ffffff;
+  color: #0e185f;
 }
 #body_area {
   width: 100%;

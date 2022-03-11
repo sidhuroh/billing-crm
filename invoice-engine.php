@@ -209,16 +209,21 @@ while ($row = mysqli_fetch_array($query)) {
                 <div style='float: right; width: 250px; border-radius: 8px;'>
                     <br>
 
-                    <p style='padding: 5px; color: #333; font-weight: 300;'>Sub Total Amount <?php
-                                                                                                $sql2 = "SELECT * FROM items WHERE invoice_id='$invoice_number'";
-                                                                                                $query2 = mysqli_query($conn, $sql2);
-                                                                                                while ($rows = mysqli_fetch_assoc($query2)) {
-                                                                                                    $price2 += $rows['price'];
-                                                                                                    $main2 = $rows['price'];
-                                                                                                }
-                                                                                                $final2 = $price2;
-                                                                                                echo $final2 . "/-";
-                                                                                                ?></p>
+                    <p style='padding: 5px; color: #333; font-weight: 300;'>Sub Total Amount 
+
+                        <?php 
+                        $sql2 = "SELECT * FROM items WHERE invoice_id='$invoice_number'";
+                        $query2 = mysqli_query($conn, $sql2);
+                        while ($rows = mysqli_fetch_assoc($query2)) {
+                            $price2 = $rows['price'];
+                            $price2 += $rows['price'];
+                            $main2 = $rows['price'];
+                            }
+                            $final2 = $price2;
+                            echo $final2 . "/-";
+                        ?>
+                            
+                        </p>
                     <p style='padding: 5px; color: #333; font-weight: 300;'>Tax / GST : 5%</p>
                     <center>
                         <p style="font-size: 24px; padding: 20px; font-weight: 700; color: #0F2C67;">Total<br>
@@ -227,6 +232,7 @@ while ($row = mysqli_fetch_array($query)) {
                                 $sql3 = "SELECT * FROM items WHERE invoice_id='$invoice_number'";
                                 $query3 = mysqli_query($conn, $sql3);
                                 while ($rows = mysqli_fetch_assoc($query3)) {
+                                    $price3 = $rows['price'];
                                     $price3 += $rows['price'];
                                     $main3 = $rows['price'];
                                 }

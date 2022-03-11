@@ -31,14 +31,31 @@ if (isset($_SESSION['username'])) {
 }
 ?>
 <?php
-
 $id = $_GET['value'];
-
 $query = "SELECT * FROM brands WHERE admin='$user' AND id='$id'";
 $sql = mysqli_query($conn, $query);
+if(mysqli_num_rows($sql)>0){
+$arr=['id'=>"",'name'=>"","barcode"=>"","P_Unit_Price"=>"","GST"=>"","stock_id"=>"","total"=>"","stname"=>""];
 while ($row = mysqli_fetch_assoc($sql)) {
     $id = $row['id'];
     $name = $row['name'];
     $barcode = $row['barcode'];
-    echo $barcode;
+    $punitprice = $row['P_Unit_Price'];
+    $gstprice = $row['GST'];
+    $total = $punitprice + $gstprice;
+    $stockid = $row['stock_id'];
+
+        $q2 = "SELECT * FROM stocks WHERE admin='$user' AND id='$stockid'";
+        $sq2 = mysqli_query($conn, $q2);
+
+        while ($row2 = mysqli_fetch_assoc($sq2)) {
+
+            $stname = $row2['name'];
+        }
+
+        $arr=['id'=>$row['id'],'name'=>$row['name'],"barcode"=>$row['barcode'],"P_Unit_Price"=>$row['P_Unit_Price'],"GST"=>$row['GST'],"stock_id"=>$stockid,"total"=>$total,"stname"=>$stname];
+
+    //echo $punitprice."-".$gstprice."-".$total."-".$id."-".$name."-".$barcode."-".$stname;
 }
+}
+echo json_encode($arr);

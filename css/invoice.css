@@ -815,6 +815,10 @@ kbd {
   color: #111111;
 }
 
+.cs-primary_color2 {
+  color: #ffffff;
+}
+
 .cs-secondary_color {
   color: #777777;
 }
@@ -827,8 +831,8 @@ kbd {
   border-color: #eaeaea;
 }
 
-.cs-focus_bg {
-  background: #f6f6f6;
+.cs-focus_bg2 {
+  background: #f7f7f7;
 }
 
 .cs-accent_10_bg {

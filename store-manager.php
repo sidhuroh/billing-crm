@@ -28,15 +28,16 @@ include_once("connection/header.php");
             #customers th {
                 padding: 15px;
                 color: #555;
+                border: 1px solid #f1f1f1;
                 font-weight: 300;
             }
 
             #customers tr:nth-child(even) {
-                background-color: #f2f2f2;
+                border: 1px solid #f1f1f1;
             }
 
             #customers tr:hover {
-                background-color: #ddd;
+                background-color: #eee;
             }
 
             #customers th {
@@ -44,9 +45,11 @@ include_once("connection/header.php");
                 padding: 15px;
                 text-align: left;
                 border-bottom: 2px solid #0077b6;
-                background-color: #e3f2fd;
+                background-color: #fefefe;
                 color: #333;
                 font-weight: 700;
+                font-size: 13px;
+                text-transform: uppercase;
             }
         </style>
         <div style='background: #fff; padding: 40px; overflow-x: auto;

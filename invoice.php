@@ -7,6 +7,8 @@ while ($row = mysqli_fetch_array($query)) {
     $invoice_for = $row['invoice_for'];
     $invoice_number = $row['invoice_rand'];
     $date = $row['invoice_date'];
+    $discount_amt = $row['discount_amt'];
+    $theme = $row['theme'];
 }
 ?>
 <?php
@@ -27,11 +29,20 @@ $query2 = mysqli_query($conn, $sql2);
 while ($rows = mysqli_fetch_assoc($query2)) {
     $price2 += $rows['price'];
     $main2 = $rows['price'];
+
+    $gst += $rows['tax'];
 }
 $final2 = $price2;
 $final2 . "/-";
+
+$gst_final = $gst;
 ?>
 
+<style type="text/css">
+    .cs-focus_bg {
+        background: <?php echo $theme; ?>;
+    }
+</style>
 <!DOCTYPE html>
 <!-- saved from url=(0046)https://ivonne.vercel.app/general-invoice.html -->
 <html class="no-js" lang="en">
@@ -86,11 +97,11 @@ $final2 . "/-";
                             <table>
                                 <thead>
                                     <tr>
-                                        <th class="cs-width_3 cs-semi_bold cs-primary_color cs-focus_bg">Item</th>
-                                        <th class="cs-width_2 cs-semi_bold cs-primary_color cs-focus_bg">Qty</th>
-                                        <th class="cs-width_1 cs-semi_bold cs-primary_color cs-focus_bg">Value</th>
-                                        <th class="cs-width_1 cs-semi_bold cs-primary_color cs-focus_bg">Gst</th>
-                                        <th class="cs-width_3 cs-semi_bold cs-primary_color cs-focus_bg cs-text_right">Total</th>
+                                        <th class="cs-width_3 cs-semi_bold cs-primary_color2 cs-focus_bg">Item</th>
+                                        <th class="cs-width_2 cs-semi_bold cs-primary_color2 cs-focus_bg">Qty</th>
+                                        <th class="cs-width_1 cs-semi_bold cs-primary_color2 cs-focus_bg">Value</th>
+                                        <th class="cs-width_1 cs-semi_bold cs-primary_color2 cs-focus_bg">Gst</th>
+                                        <th class="cs-width_3 cs-semi_bold cs-primary_color2 cs-focus_bg cs-text_right">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -127,32 +138,25 @@ $final2 . "/-";
                                 <table>
                                     <tbody>
                                         <tr class="cs-border_left">
-                                            <td class="cs-width_2 cs-semi_bold cs-primary_color cs-focus_bg">Subtoal</td>
-                                            <td class="cs-width_2 cs-semi_bold cs-focus_bg cs-primary_color cs-text_right">Rs. <?php echo $final2; ?>/-</td>
+                                            <td class="cs-width_2 cs-semi_bold cs-primary_color cs-focus_bg2">Subtoal</td>
+                                            <td class="cs-width_2 cs-semi_bold cs-focus_bg2 cs-primary_color cs-text_right">Rs. <?php echo $final2; ?>/-</td>
                                         </tr>
                                         <tr class="cs-border_left">
-                                            <td class="cs-width_2 cs-semi_bold cs-primary_color cs-focus_bg">Discount</td>
-                                            <td class="cs-width_2 cs-semi_bold cs-focus_bg cs-primary_color cs-text_right">0</td>
+                                            <td class="cs-width_2 cs-semi_bold cs-primary_color cs-focus_bg2">Discount</td>
+                                            <td class="cs-width_2 cs-semi_bold cs-focus_bg2 cs-primary_color cs-text_right">Rs. <?php echo $discount_amt; ?></td>
                                         </tr>
                                         <tr class="cs-border_left">
-                                            <td class="cs-width_2 cs-semi_bold cs-primary_color cs-focus_bg">GST</td>
-                                            <td class="cs-width_2 cs-semi_bold cs-focus_bg cs-primary_color cs-text_right">5%</td>
+                                            <td class="cs-width_2 cs-semi_bold cs-primary_color cs-focus_bg2">GST</td>
+                                            <td class="cs-width_2 cs-semi_bold cs-focus_bg2 cs-primary_color cs-text_right">Rs. <?php echo $gst_final; ?></td>
                                         </tr>
                                         <tr class="cs-border_left">
-                                            <td class="cs-width_2 cs-semi_bold cs-primary_color cs-focus_bg">Due Amount</td>
-                                            <td class="cs-width_2 cs-semi_bold cs-focus_bg cs-primary_color cs-text_right">Rs. 0/-</td>
+                                            <td class="cs-width_2 cs-semi_bold cs-primary_color cs-focus_bg2">Due Amount</td>
+                                            <td class="cs-width_2 cs-semi_bold cs-focus_bg2 cs-primary_color cs-text_right">Rs. 0/-</td>
                                         </tr>
                                         <tr class="cs-border_left">
-                                            <td class="cs-width_2 cs-semi_bold cs-primary_color cs-focus_bg">Total Amount</td>
-                                            <td class="cs-width_2 cs-semi_bold cs-focus_bg cs-primary_color cs-text_right">Rs. <?php
-                                                                                                                                $sql3 = "SELECT * FROM items WHERE invoice_id='$invoice_number'";
-                                                                                                                                $query3 = mysqli_query($conn, $sql3);
-                                                                                                                                while ($rows = mysqli_fetch_assoc($query3)) {
-                                                                                                                                    $price3 += $rows['price'];
-                                                                                                                                    $main3 = $rows['price'];
-                                                                                                                                }
-                                                                                                                                echo $percentage = $price3 * 1.05;
-
+                                            <td class="cs-width_2 cs-semi_bold cs-primary_color cs-focus_bg2">Total Amount</td>
+                                            <td class="cs-width_2 cs-semi_bold cs-focus_bg2 cs-primary_color cs-text_right">Rs. <?php
+                                                                                                                                echo $total = $gst_final + $final2;
                                                                                                                                 ?>/-</td>
                                         </tr>
                                     </tbody>
@@ -167,7 +171,9 @@ $final2 . "/-";
                                 <tbody>
                                     <tr class="cs-border_none">
                                         <td class="cs-width_3 cs-border_top_0 cs-bold cs-f16 cs-primary_color">Amount Paid</td>
-                                        <td class="cs-width_3 cs-border_top_0 cs-bold cs-f16 cs-primary_color cs-text_right">Rs. <?php echo $percentage; ?>/-</td>
+                                        <td class="cs-width_3 cs-border_top_0 cs-bold cs-f16 cs-primary_color cs-text_right">Rs. <?php
+                                                                                                                                    echo $total = $gst_final + $final2;
+                                                                                                                                    ?>/-</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -189,7 +195,7 @@ $final2 . "/-";
                 </div>
                 <br><br>
                 <center>
-                    <p style='font-size: 13.5; color: #333;'>Powered By <a href="#" style="color: #666666; text-decoration: none; font-weight: 400;">BILLBUSS.COM</a></p>
+                    <p style='font-size: 13.5; color: #333;'>&copy;Copyright By <a href="#" style="color: #666666; text-decoration: none; font-weight: 400;">JB RETAIL</a> 2022, Powered By <a href="#" style="color: #666666; text-decoration: none; font-weight: 400;">Billbuss</a></p>
                 </center>
 
                 <!-- .cs-note -->
@@ -222,5 +228,10 @@ $final2 . "/-";
 
 </body>
 <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+<script type="text/javascript">
+    $(document).ready(function() {
+        window.print();
+    });
+</script>
 
 </html>

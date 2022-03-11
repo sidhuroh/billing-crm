@@ -6,7 +6,18 @@ include_once("connection/header.php");
     <div id="margin-setter2">
         <div style="padding: 20px;">
             <f style='font-size: 18px; font-weight: 700; color: #555;'>Dashboard</f>
-            <a href='invoice-manager.php' style='float: right; margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; background: #0092ff; border-radius: 4px; padding: 10px;'><i class="fas fa-file-invoice"></i> &nbsp; Create Invoice</a>
+            <?php
+            if (isset($_POST['new_invoice'])) {
+                $rand = sprintf("%06d", mt_rand(1, 999999));
+                $date = date("d/m/Y");
+                $sql = "INSERT INTO invoice (id, invoice_rand, invoice_for, invoice_date, admin, saved, discount_amt, theme) VALUES (null, '$rand', '', '$date', '$user', '0', '', '#0E185F')";
+                $query = mysqli_query($conn, $sql);
+                echo "<meta http-equiv=\"refresh\" content=\"0; url=generate.php?id=$rand\">";
+            }
+            ?>
+            <form action="dashboard.php" method="POST" style="display: inline;">
+                <input type="submit" name="new_invoice" value="Create Invoice+" style='margin-left: 20px; float: right; text-decoration: none; font-weight: 700; color: #fff; background: #f72585; border-radius: 4px; padding: 10px; border: 1px solid #f72585;'>
+            </form>
             <br><a href='#' style='text-decoration: none; color: #023e8a;'>Welcome to the dashboard</a>
         </div>
     </div>
@@ -107,8 +118,20 @@ if ($user_type == "superadmin") {
                         <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/qhviklyi.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:80px;height:80px; float: left;">
                         </lord-icon>
-                        <f style='font-size: 16px; margin-left: 20px; font-weight: 700;'>Total Sales</f><br>
-                        <p style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'>₹0</p>
+                        <f style='font-size: 16px; margin-left: 20px; font-weight: 700;'>Today Sales</f><br>
+                        <p id="total_sales_sm" style='font-size: 40px; text-align: center; margin-left: 20px; font-weight: 700;'>₹<?php
+                                                                                                                                    $sql2 = "SELECT * FROM items WHERE admin='$user'";
+                                                                                                                                    $query2 = mysqli_query($conn, $sql2);
+                                                                                                                                    while ($rows = mysqli_fetch_assoc($query2)) {
+                                                                                                                                        $price2 += $rows['amount'];
+                                                                                                                                    }
+                                                                                                                                    $price2
+                                                                                                                                    ?>
+                            <br><br>
+                            <script>
+                                document.getElementById('total_sales_sm').innerHTML = numeral(<?php echo $price2; ?>).format('0.0a');
+                            </script>
+                        </p>
                     </div>
                 </div>
                 <div>

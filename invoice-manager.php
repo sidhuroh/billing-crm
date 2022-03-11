@@ -12,10 +12,10 @@ include_once("connection/header.php");
             <?php
             if (isset($_POST['new_invoice'])) {
                 $rand = sprintf("%06d", mt_rand(1, 999999));
-                $date = date("d-m-Y");
-                $sql = "INSERT INTO invoice (id, invoice_rand, invoice_for, invoice_date, admin, saved) VALUES (null, '$rand', '', '$date', '$user', '0')";
+                $date = date("d/m/Y");
+                $sql = "INSERT INTO invoice (id, invoice_rand, invoice_for, invoice_date, admin, saved, discount_amt, theme) VALUES (null, '$rand', '', '$date', '$user', '0', '', '#0E185F')";
                 $query = mysqli_query($conn, $sql);
-                echo "<meta http-equiv=\"refresh\" content=\"0; url=invoice-engine.php?id=$rand\">";
+                echo "<meta http-equiv=\"refresh\" content=\"0; url=generate.php?id=$rand\">";
             }
             ?>
             <form action="invoice-manager.php" method="POST" style="display: inline;">
@@ -98,8 +98,9 @@ include_once("connection/header.php");
                     <td>$invoice_for</td>
                     <td>$invoice_id</td>
                     <td>$invoice_date</td>
-                    <td><a href='invoice-engine.php?id=$invoice_id' style='color: #fff; background: #3a86ff; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-edit'></i></a>
+                    <td>
                     <a onclick='show_alert$id();' style='color: #fff; background: #ff006e; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-trash'></i></a>
+                    <a href='invoice.php?id=$invoice_id' style='color: #fff; background: #54ae93; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-eye'></i></a>
                     </td>
                 </tr>
                 ";

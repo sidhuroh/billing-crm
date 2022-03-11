@@ -15,6 +15,7 @@ if (isset($_SESSION['username'])) {
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/jquery-ui.css">
 <link rel="stylesheet" href="css/jquery-ui.theme.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 <script src="https://kit.fontawesome.com/318618787a.js" crossorigin="anonymous"></script>
 <link rel="shortcut icon" href="./images/logo.svg" type="image/x-icon" />
 <div class="sidebar" id="sidebar_toggle">
@@ -30,7 +31,7 @@ if (isset($_SESSION['username'])) {
             <br>
             <br>
             <form action="#" method="GET">
-                <input type="text" name="q" placeholder="Search" class="search_sidebar">
+                <!-- <input type="text" name="q" placeholder="Search" class="search_sidebar"> -->
             </form>
             <center>
                 <?php
@@ -79,7 +80,7 @@ if (isset($_SESSION['username'])) {
             <br>
             <br>
             <form action="#" method="GET">
-                <input type="text" name="q" placeholder="Search" class="search_sidebar">
+                <!-- <input type="text" name="q" placeholder="Search" class="search_sidebar"> -->
             </form>
             <center>
                 <?php

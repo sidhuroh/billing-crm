@@ -53,7 +53,8 @@ while ($rows = mysqli_fetch_assoc($result)) {
                             }
                         }
                         ?>
-                        <center><img src='<?php echo $img_final; ?>' width="180px" style='padding: 10px; border: 1px solid #eee;'>
+                        <center>
+                            <img src='<?php echo $img_final; ?>' width="180px" style='padding: 10px; border: 1px solid #eee;'>
                             <form action="#" method="POST" enctype='multipart/form-data'>
                                 <input type="file" name="img" style="padding: 10px; border: 1px dashed #023e8a; margin-top: 10px;">
                                 <br><br>
@@ -62,6 +63,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
                         </center>
                     </div>
                 </div>
+                <div style="clear: both;"></div>
             </div>
         </div>
         <br>
