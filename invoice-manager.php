@@ -11,7 +11,7 @@ include_once("connection/header.php");
 
             <?php
             if (isset($_POST['new_invoice'])) {
-                $rand = sprintf("%06d", mt_rand(1, 999999));
+                $rand = sprintf("%04d", mt_rand(1, 9999));
                 $date = date("d/m/Y");
                 $sql = "INSERT INTO invoice (id, invoice_rand, invoice_for, invoice_date, admin, saved, discount_amt, theme) VALUES (null, '$rand', '', '$date', '$user', '0', '', '#0E185F')";
                 $query = mysqli_query($conn, $sql);

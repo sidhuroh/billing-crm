@@ -10,21 +10,41 @@ include_once("connection/header.php");
                 <?php
                 if ($user_type == "superadmin") {
                 ?>
-                    Super Admins
+                    Manage Stores
+                    <a href='create-role.php' style='margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; background: #f72585; border-radius: 4px; padding: 10px; float: right;'><i class='fas fa-plus'></i> Add New</a>
                 <?php
                 } else if ($user_type == "storeadmin") {
                 ?>
                     Manage Store Branches
+                    <?php
+                    $sql = "SELECT * FROM users WHERE administrator='$user'";
+                    $query = mysqli_query($conn, $sql);
+                    $admin_store_limit = mysqli_num_rows($query);
+                    $admin_store_limit;
+
+                    $sql = "SELECT * FROM users WHERE email='$user' AND user_type='storeadmin'";
+                    $query = mysqli_query($conn, $sql);
+                    while ($rows = mysqli_fetch_assoc($query)) {
+                        $check_store_count = $rows['store_count'];
+                    }
+
+                    if ($admin_store_limit >= $check_store_count) {
+                        echo "<div style='float: right; padding: 5px 10px; border-radius: 8px; border: 1px solid #FF7272; background: #FC4F4F;'><f style='font-size: 12px; font-weight: 400; color: #fff;'>Limit Reached!</f><br><f style='font-size: 10px; font-weight: 300; color: #fff;'>Please contact your administrator!</f></div>";
+                    } else {
+                        echo "<a href='create-role.php' style='margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; background: #f72585; border-radius: 4px; padding: 10px; float: right;'><i class='fas fa-plus'></i> Add New</a>";
+                    }
+                    ?>
                 <?php
                 }
                 ?>
             </f>
-            <a href='create-role.php' style='margin-left: 20px; text-decoration: none; font-weight: 700; color: #fff; background: #f72585; border-radius: 4px; padding: 10px; float: right;'><i class="fas fa-plus"></i> Add New</a>
+
+
             <br><a href='dashboard.php' style='text-decoration: none; color: #023e8a;'>Dasboard</a><i class="fas fa-angle-right" style='margin-left: 5px; margin-right: 5px; color: #7ec061;'></i>
             <a href='' style='text-decoration: none; color: #023e8a;'><?php
                                                                         if ($user_type == "superadmin") {
                                                                         ?>
-                    Super Admins
+                    Manage Stores
                 <?php
                                                                         } else if ($user_type == "storeadmin") {
                 ?>
@@ -88,12 +108,24 @@ include_once("connection/header.php");
             <table id="customers">
                 <tr>
                     <th>ID</th>
-                    <th>Username</th>
+
+                    <?php
+                    if ($user_type == "superadmin") {
+                    ?>
+                        <th>Store Name</th>
+                    <?php
+                    } else if ($user_type == "storeadmin") {
+                    ?>
+                        <th>Manager Name</th>
+                    <?php
+                    }
+                    ?>
+
                     <?php
                     if ($user_type == "superadmin") {
                     } else if ($user_type == "storeadmin") {
                     ?>
-                        <th>Store Manager</th>
+                        <th>Store Branch</th>
                     <?php
                     }
                     ?>
@@ -117,6 +149,7 @@ include_once("connection/header.php");
                     $email = $rows['email'];
                     $phone = $rows['phone'];
                     $author = $rows['author'];
+
                     $added_on = $rows['added_on'];
                     $status = $rows['status'];
                     if ($status == "active") {
@@ -124,14 +157,21 @@ include_once("connection/header.php");
                     } else {
                         $color_status = "<f style='background: #eee; padding: 5px; border-radius 15px; color: #888;'>Closed</f>";
                     }
+                    $query = "SELECT store_name from stores WHERE id = '$author'";
+                    $result = mysqli_query($conn, $query);
+                    while ($rows = mysqli_fetch_array($result)) {
+                        $author_final_id = $rows['id'];
+                        $author_final = $rows['store_name'];
+                    }
                     echo "<tr>
                     <td><b>#$id</b></td>
                     <td>$name</td>
                     ";
                     if ($user_type == "superadmin") {
                     } else if ($user_type == "storeadmin") {
-                        echo "<td>$author</td>";
+                        echo "<td>$author_final</td>";
                     }
+
                     echo "
                     <td>$email</td>
                     <td>$phone</td>

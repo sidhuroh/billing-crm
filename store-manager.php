@@ -67,7 +67,7 @@ include_once("connection/header.php");
             <table id="customers">
                 <tr>
                     <th>ID</th>
-                    <th>Store Name</th>
+                    <th>Branch</th>
                     <th>Address</th>
                     <th>Status</th>
                     <th>Action</th>

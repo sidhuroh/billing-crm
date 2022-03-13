@@ -69,12 +69,12 @@ $gst_final = $gst;
                         <p class="cs-invoice_date cs-primary_color cs-m0"><b class="cs-primary_color">Date: </b><?php echo $date; ?></p>
                     </div>
                     <div class="cs-invoice_right cs-text_right">
-                        <div class="cs-logo cs-mb5"><img src="images/wide-logo.svg" alt="Logo" width="180px"></div>
+                        <div class="cs-logo cs-mb5"><img src="<?php echo $img_final; ?>" alt="Logo" width="180px"></div>
                     </div>
                 </div>
                 <div class="cs-invoice_head cs-mb10">
                     <div class="cs-invoice_left">
-                        <b class="cs-primary_color">Invoice To:</b>
+                        <b class="cs-primary_color">Invoice From:</b>
                         <p>
                             <?php echo $user_name; ?><br>
                             <?php echo $user ?> <br>

@@ -86,7 +86,7 @@ include_once("connection/header.php");
                                     $result2 = mysqli_query($conn, $user_check2);
                                     $result_check2 = mysqli_num_rows($result2);
                                     if (!$result_check2 > 0) {
-                                        $query = "INSERT INTO `users`(`id`, `user_name`, `email`, `password`, `user_type`, `added_on`, `added_to`, `store_count`, `status`, `phone`, `author`, `administrator`) VALUES (null,'$name_input','$email_input','$password_input','substoreadmin','$added_on','','','active','$phone_input', '$author', '$user')";
+                                        $query = "INSERT INTO `users`(`id`, `user_name`, `email`, `password`, `logo_img`, `user_type`, `added_on`, `added_to`, `store_count`, `status`, `phone`, `author`, `administrator`) VALUES (null,'$name_input','$email_input','$password_input','','substoreadmin','$added_on','','','active','$phone_input', '$author', '$user')";
                                         $result = mysqli_query($conn, $query);
                                         echo "<meta http-equiv=\"refresh\" content=\"0; url=role-manager.php\">";
                                     } else {

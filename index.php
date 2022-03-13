@@ -65,6 +65,12 @@ if (isset($_SESSION['username'])) {
                 }
             }
             ?>
+            <?php
+            $hold = @$_GET['hold'];
+            if ($hold == "1") {
+                $error = "<br><f style='font-size: 14px; color: #ff2d2d; border: 1px solid #ff2d2d; padding: 10px;'> Your Account Is On Hold Please Contact Admin!</f>";
+            }
+            ?>
             <center><?php echo $error; ?></center>
             <form action="index.php" method="POST">
                 <input type="email" name="email" placeholder="Email" value="<?php echo $uid; ?>" class="input_styler">

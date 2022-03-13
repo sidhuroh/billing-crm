@@ -15,7 +15,9 @@ if (isset($_SESSION['username'])) {
         $user_name = $row['user_name'];
         $user_type = $row['user_type'];
         $user_phone = $row['phone'];
+        $author = $row['author'];
         $store_count = $row['store_count'];
+        $status = $row['status'];
         if ($store_count == "") {
             $store_count = "0";
         }

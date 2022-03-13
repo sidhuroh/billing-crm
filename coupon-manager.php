@@ -100,10 +100,10 @@ include_once("connection/header.php");
                     <td>$start_date</td>
                     <td>$end_date</td>
                     <td>$color_status</td>
-                    <td><a href='edit-coupon.php?id=$id' style='color: #fff; background: #3a86ff; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-edit'></i></a>
+                    <td><div style='width: 140px;'><a href='edit-coupon.php?id=$id' style='color: #fff; background: #3a86ff; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-edit'></i></a>
                     <a onclick='show_alert$id();' style='color: #fff; background: #ff006e; padding: 8px; margin-right: 8px; border-radius: 8px;'><i class='fas fa-trash'></i></a>
                     <a onclick='show_alert2$id();' style='color: #fff; background: #fcbf49; padding: 8px; border-radius: 8px;'><i class='fas fa-power-off'></i></a></td>
-                    </tr>";
+                    </div></tr>";
                 ?>
                     <script>
                         function show_alert<?php echo $id; ?>() {

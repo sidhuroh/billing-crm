@@ -6,7 +6,7 @@ include_once("connection/header.php");
 <div style="background: #fff;">
     <div id="margin-setter2">
         <div style="padding: 20px;">
-            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Create Store</f>
+            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Create Branch Store</f>
         </div>
     </div>
     <div style='clear: both;'></div>
@@ -44,7 +44,7 @@ include_once("connection/header.php");
                 }
                 echo $report;
                 ?>
-                <p style='font-weight: 600; font-size: 18px; color: #555;'>Create Profile</p><br>
+                <p style='font-weight: 600; font-size: 18px; color: #555;'>Create Another Branch</p><br>
                 <script type="text/javascript">
                     $(document).ready(function() {
                         // do not allow users to enter spaces:
@@ -63,8 +63,8 @@ include_once("connection/header.php");
                 <form action='#' method='POST'>
                     <div class='flex-container2'>
                         <div style='flex-grow: 1;'>
-                            <p style='font-weight: 300; font-size: 14px; color: #333;'>Store Username</p>
-                            <input id="username" type='text' name="user_name" placeholder="Enter Store Name" value="<?php echo $name; ?>" class="form_control" />
+                            <p style='font-weight: 300; font-size: 14px; color: #333;'>Store Branch</p>
+                            <input type='name' name="user_name" value="<?php echo $name; ?>" class="form_control">
                         </div>
                     </div>
                     <div class='flex-container2'>

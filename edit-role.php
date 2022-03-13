@@ -13,6 +13,13 @@ while ($rows = mysqli_fetch_assoc($result)) {
     $phone = $rows['phone'];
     $store_count = $rows['store_count'];
     $author = $rows['author'];
+    $profile_type = $rows['user_type'];
+}
+$query = "SELECT * from stores WHERE id = '$author'";
+$result = mysqli_query($conn, $query);
+while ($rows = mysqli_fetch_assoc($result)) {
+    $author_final = $rows['id'];
+    $author_final = $rows['store_name'];
 }
 ?>
 <title>Dashboard - Edit Role | Billing</title>
@@ -158,7 +165,18 @@ while ($rows = mysqli_fetch_assoc($result)) {
                 <form action='#' method='POST'>
                     <div class='flex-container2'>
                         <div style='flex-grow: 1;'>
-                            <p style='font-weight: 300; font-size: 14px; color: #333;'>First Name</p>
+                            <?php
+                            if ($profile_type == "superadmin") {
+                            ?>
+                                <p style='font-weight: 300; font-size: 14px; color: #333;'>First Name</p>
+                            <?php
+                            } else if ($profile_type == "storeadmin") {
+                            ?>
+                                <p style='font-weight: 300; font-size: 14px; color: #333;'>Store Name</p>
+                            <?php
+                            }
+                            ?>
+
                             <input type='text' name="user_name" placeholder="John Doe" value="<?php echo $name; ?>" class="form_control" />
                         </div>
                         <div style='flex-grow: 1;'>
@@ -182,13 +200,14 @@ while ($rows = mysqli_fetch_assoc($result)) {
                             ?>
                                 <p style='font-weight: 300; font-size: 14px; color: #333;'>Choose One Store</p>
                                 <select name="author" class="form_control">
-                                    <option value='$author'><?php echo $author ?></option>
+                                    <option value='$author'><?php echo $author_final ?></option>
                                     <?php
                                     $sql = "SELECT * FROM stores WHERE store_by = '$user'";
                                     $query = mysqli_query($conn, $sql);
                                     while ($rows = mysqli_fetch_assoc($query)) {
+                                        $id = $rows['id'];
                                         $store_name = $rows['store_name'];
-                                        echo "<option value='$store_name'>$store_name</option>";
+                                        echo "<option value='$id'>$store_name</option>";
                                     }
                                     ?>
                                 </select>

@@ -1,4 +1,10 @@
-<?php include_once('db.php'); ?>
+<?php include_once('db.php');
+if ($status == "active") {
+} else {
+    echo "<meta http-equiv=\"refresh\" content=\"0; url=logout.php?hold=1\">";
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <?php
@@ -69,6 +75,53 @@ if (isset($_SESSION['username'])) {
                 <a href='logout.php'><button class="sidebar_link"><i class="fas fa-power-off" style="padding-right: 15px;"></i> Logout</button></a>
                 <center>
         </div>
+    <?php
+    } else if ($user_type == "singlestore") {
+    ?>
+        <div style="margin-left: auto; margin-right: auto; width: 80%; padding: 20px;">
+            <img src="images/logo.svg" style="background: #fff; border: 1px solid #eee; border-radius: 8px; float: left; margin-right: 10px;" width="40px">
+            <p style="font-weight: 700; float: left; margin-top: 5px;"><?php echo $user_name; ?></p><br>
+            <p style="font-weight: 400; text-transform: capitalize; margin-top: 5px; color: #888; "><?php echo $user_type; ?></p>
+            <br>
+            <br>
+            <form action="#" method="GET">
+                <!-- <input type="text" name="q" placeholder="Search" class="search_sidebar"> -->
+            </form>
+            <center>
+                <?php
+                $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
+                if ($curPageName == 'dashboard.php') {
+                    echo '<a href="dashboard.php"><button class="sidebar_link" style="color: #fff; background: #0874f0; color: #fff; padding-left: 10px; border-radius: 10px;"><i class="fas fa-tachometer-alt" style="padding-right: 15px; color: #fff;"></i> Dashboard</button></a>';
+                } else {
+                    echo '<a href="dashboard.php"><button class="sidebar_link"><i class="fas fa-tachometer-alt" style="padding-right: 15px; color: #888;"></i> Dashboard</button></a>';
+                }
+                ?>
+
+            </center>
+            <br>
+            <hr style="background: #eee; border: 0 none; height: 1px; margin-top: 10px; margin-bottom: 10px;">
+            <br>
+            <p style="font-weight: 400; font-size: 12px; color: #888;">Management</p><br>
+            <center>
+                <a href='stocks-manager.php'><button class="sidebar_link"><i class="fas fa-box" style="padding-right: 15px;"></i> Stocks</button><br></a>
+                <a href='customers.php'><button class="sidebar_link"><i class="fas fa-address-card" style="padding-right: 15px;"></i> Customers</button><br></a>
+                <a href='invoice-manager.php'><button class="sidebar_link"><i class="fas fa-receipt" style=" padding-right: 15px;"></i> Invoices</button><br></a>
+                <a href='coupon-manager.php'><button class="sidebar_link"><i class="fab fa-buffer" style="padding-right: 15px;"></i> Coupon Code</button><br></a>
+                <br>
+                <hr style="background: #eee; border: 0 none; height: 1px; margin-top: 10px; margin-bottom: 10px;">
+                <br>
+
+            </center>
+            <p style="font-weight: 400; font-size: 12px; color: #888;">General</p><br>
+            <center>
+                <button class="sidebar_link" onclick="sidebar()"><i class="fas fa-cogs" style="padding-right: 15px;"></i> Settings</button>
+                <div id="more_settings" style="display: none;">
+                    <a href='#'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Store Details</button></a>
+                    <a href='edit-role.php?id=<?php echo $user_id; ?>'><button class="sidebar_link2"><i class="fas fa-arrow-right"></i> Profile Update</button></a>
+                </div>
+                <a href='logout.php'><button class="sidebar_link"><i class="fas fa-power-off" style="padding-right: 15px;"></i> Logout</button></a>
+                <br><br>
+        </div>
 
     <?php
     } else if ($user_type == "storeadmin") {
@@ -120,20 +173,74 @@ if (isset($_SESSION['username'])) {
                 <br><br>
         </div>
     <?php
+    } else if ($user_type == "substoreadmin") {
+    ?>
+        <div style="margin-left: auto; margin-right: auto; width: 80%; padding: 20px;">
+            <img src="images/logo.svg" style="background: #fff; border: 1px solid #eee; border-radius: 8px; float: left; margin-right: 10px;" width="40px">
+            <p style="font-weight: 700; float: left; margin-top: 5px;"><?php echo $user_name; ?></p><br>
+            <p style="font-weight: 400; text-transform: capitalize; margin-top: 5px; color: #888; "><?php echo $user_type; ?></p>
+            <br>
+            <br>
+            <form action="#" method="GET">
+                <!-- <input type="text" name="q" placeholder="Search" class="search_sidebar"> -->
+            </form>
+            <center>
+                <?php
+                $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
+                if ($curPageName == 'dashboard.php') {
+                    echo '<a href="dashboard.php"><button class="sidebar_link" style="color: #fff; background: #0874f0; color: #fff; padding-left: 10px; border-radius: 10px;"><i class="fas fa-tachometer-alt" style="padding-right: 15px; color: #fff;"></i> Dashboard</button></a>';
+                } else {
+                    echo '<a href="dashboard.php"><button class="sidebar_link"><i class="fas fa-tachometer-alt" style="padding-right: 15px; color: #888;"></i> Dashboard</button></a>';
+                }
+                ?>
+
+            </center>
+            <br>
+            <hr style="background: #eee; border: 0 none; height: 1px; margin-top: 10px; margin-bottom: 10px;">
+            <br>
+            <p style="font-weight: 400; font-size: 12px; color: #888;">Management</p><br>
+            <center>
+                <a href='stocks-manager.php'><button class="sidebar_link"><i class="fas fa-box" style="padding-right: 15px;"></i> Stocks</button><br></a>
+                <a href='customers.php'><button class="sidebar_link"><i class="fas fa-address-card" style="padding-right: 15px;"></i> Customers</button><br></a>
+                <a href='invoice-manager.php'><button class="sidebar_link"><i class="fas fa-receipt" style=" padding-right: 15px;"></i> Invoices</button><br></a>
+                <br>
+                <hr style="background: #eee; border: 0 none; height: 1px; margin-top: 10px; margin-bottom: 10px;">
+                <br>
+            </center>
+            <p style="font-weight: 400; font-size: 12px; color: #888;">General</p><br>
+            <center>
+                <a href='logout.php'><button class="sidebar_link"><i class="fas fa-power-off" style="padding-right: 15px;"></i> Logout</button></a>
+                <br><br>
+            </center>
+        </div>
+    <?php
     }
     ?>
+
+
 </div>
 <div id="header_toggle">
     <div id="margin-setter">
         <div style="padding: 10px;">
-            <button id="hide_btn" class="mobile_hide" style="background: #fff; float: left;  border: 1px solid #eee; padding: 10px; margin-top: 5px; color: #888;" onclick="panel1()"><i class="fas fa-bars"></i></button>
-            <button id="show_btn" style="float: left; display: none; background: #43aa8b; border: 1px solid #eee; padding: 10px; margin-top: 5px; color: #fff;" onclick="panel2()"><i class="fas fa-bars"></i></button>
-            <a href='index.php'><button class="mobile_hide" id="Home" style="background: #fff; float: left;  border: 1px solid #eee; padding: 10px; margin-top: 5px; color: #888; margin-left: 10px;"><i class="fas fa-home"></i></button></a>
-            <div style='float: right; width: 150px; height: 20px;'>
-                <img src='images/default.png' width='40px' height='40px' style='border-radius: 100%; float: left;'>
-                <a href='index.php' style='text-transform: capitalize; text-decoration: none; font-weight: 300; margin-left: 10px; font-size: 15px; color: #333; float:left; margin-top: 5px;'><?php echo $user_name; ?><br>
-                    <a style='font-weight: 400; margin-left: 10px;'><?php echo $user_type; ?></a></a>
-            </div>
+            <button id="hide_btn" class="mobile_hide" onclick="panel1()"><i class="fas fa-bars"></i></button>
+            <button id="show_btn" class="mobile_hide" style="display: none;" onclick="panel2()"><i class="fas fa-bars"></i></button>
+            <a href='index.php'><button class="mobile_hide" id="Home" style="padding: 10px;"><i class="fas fa-home"></i></button></a>
+            <?php if ($user_type == "substoreadmin") { ?>
+                <div style='float: right; width: 150px; height: 20px;'>
+                    <img src='https://img.icons8.com/cute-clipart/64/000000/india.png' width='40px' height='40px' style='float: left; margin-top: 5px;'>
+                    <a href='index.php' style='text-transform: capitalize; text-decoration: none; font-weight: 300; font-weight: 500; margin-left: 10px; font-size: 15px; color: #333; float:left; margin-top: 5px;'>Branch<br>
+                        <a style='font-weight: 400; margin-left: 10px;'><?php
+                                                                        $query = "SELECT * from stores WHERE id = '$author'";
+                                                                        $result = mysqli_query($conn, $query);
+                                                                        while ($rows = mysqli_fetch_assoc($result)) {
+                                                                            $author_final = $rows['id'];
+                                                                            echo $author = $rows['store_name'];
+                                                                        }
+                                                                        ?></a></a>
+                </div>
+            <?php } else { ?>
+                <img src='https://img.icons8.com/cute-clipart/64/000000/india.png' width='40px' height='40px' title="Made with Love in India!" style='float: right; margin-right: 10px; margin-top: 5px;'>
+            <?php } ?>
         </div>
     </div>
 </div>

@@ -8,6 +8,22 @@
 body {
   background: #f1f1f1;
 }
+.mobile_hide {
+  background: #fff;
+  float: left;
+  border: 1px solid #eee;
+  padding: 10px 12px;
+  margin-top: 5px;
+  color: #111;
+  border-radius: 100%;
+  transition: all 0.5s;
+  margin-left: 10px;
+}
+.mobile_hide:hover {
+  background: #0874f0;
+  border: 1px solid #0874f0;
+  color: #fff;
+}
 .input_inv_style {
   width: 100%;
   padding: 10px;

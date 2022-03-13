@@ -6,7 +6,7 @@ include_once("connection/header.php");
 <div style="background: #fff;">
     <div id="margin-setter2">
         <div style="padding: 20px;">
-            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Create Store</f>
+            <f style='font-size: 18px; font-weight: 700; color: #555;'>Store Admins > Edit Store Branch</f>
         </div>
     </div>
     <div style='clear: both;'></div>
@@ -31,17 +31,10 @@ include_once("connection/header.php");
                 if ($update_btn) {
                     $name_input = strip_tags(@$_POST['user_name']);
                     $store_desc = strip_tags(@$_POST['store_desc']);
-                    if ($name_input && $store_desc) {
-                        $store_name_check = "SELECT store_name from stores WHERE store_name='$name_input'";
-                        $result2 = mysqli_query($conn, $store_name_check);
-                        $result_check2 = mysqli_num_rows($result2);
-                        if (!$result_check2 > 0) {
-                            $query = "UPDATE `stores` SET `store_name`='$name_input',`store_desc`='$store_desc' WHERE id='$id'";
-                            $result = mysqli_query($conn, $query);
-                            echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-store-manager.php?id=$id\">";
-                        } else {
-                            echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-store-manager.php?id=$id&&updated=3\">";
-                        }
+                    if ($store_desc) {
+                        $query = "UPDATE `stores` SET `store_name`='$name_input',`store_desc`='$store_desc' WHERE id='$id'";
+                        $result = mysqli_query($conn, $query);
+                        echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-store-manager.php?id=$id\">";
                     } else {
                         echo "<meta http-equiv=\"refresh\" content=\"0; url=edit-store-manager.php?id=$id&&updated=0\">";
                     }
@@ -55,12 +48,12 @@ include_once("connection/header.php");
                 }
                 echo $report;
                 ?>
-                <p style='font-weight: 600; font-size: 18px; color: #555;'>Create Profile</p><br>
+                <p style='font-weight: 600; font-size: 18px; color: #555;'>Create Another Branch</p><br>
                 <form action='#' method='POST'>
                     <div class='flex-container2'>
                         <div style='flex-grow: 1;'>
-                            <p style='font-weight: 300; font-size: 14px; color: #333;'>Store Username</p>
-                            <input type='text' id='username' name="user_name" placeholder="Enter Store Name" value="<?php echo $name; ?>" class="form_control" />
+                            <p style='font-weight: 300; font-size: 14px; color: #333;'>Store Branch</p>
+                            <input type='name' name="user_name" value="<?php echo $name; ?>" class="form_control">
                         </div>
                     </div>
                     <div class='flex-container2'>

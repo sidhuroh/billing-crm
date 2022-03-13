@@ -32,7 +32,7 @@ $stock_id = $_GET['id'];
                     $SKU_input = $rows['SKU'];
                     $HSN_input = $rows['HSN'];
                     $Unit_input = $rows['Unit'];
-                    $gst_input = $rows['GST'];
+                    $gst_data = $rows['gst'];
                     $sell_unit_price = $rows['S_Unit_Price'];
                     $purchase_unit_price = $rows['P_Unit_Price'];
                     $gross_unit_price = $rows['Gross'];
@@ -48,13 +48,13 @@ $stock_id = $_GET['id'];
                     $SKU_input = strip_tags(@$_POST['SKU']);
                     $HSN_input = strip_tags(@$_POST['HSN']);
                     $Unit_input = strip_tags(@$_POST['Unit']);
-                    $gst_input = strip_tags(@$_POST['gst']);
+                    $gst_input = strip_tags(@$_POST['gst_data']);
                     $sell_unit_price = strip_tags(@$_POST['sell_unit_price']);
                     $purchase_unit_price = strip_tags(@$_POST['purchase_unit_price']);
-                    $gross_unit_price = strip_tags(@$_POST['gross_unit_price']);
+                    $ex_gst_unit_price = strip_tags(@$_POST['ex_gst_unit_price']);
                     $gst_unit_price = strip_tags(@$_POST['gst_unit_price']);
                     if ($name_input) {
-                        $query = "INSERT INTO `brands`(`id`, `name`, `status`, `admin`, `stock_id`, `type`, `model`, `barcode`, `SKU`, `HSN`, `Unit`, `GST`, `S_Unit_Price`, `P_Unit_Price`, `Gross`, `Tax`) VALUES (null,'$name_input','active','$user','$stock_id','','$model_input','$barcode_input','$SKU_input','$HSN_input','$Unit_input','$gst_input','$sell_unit_price','$purchase_unit_price','$gross_unit_price','$gst_unit_price')";
+                        $query = "INSERT INTO `brands`(`id`, `name`, `status`, `admin`, `stock_id`, `type`, `model`, `barcode`, `SKU`, `HSN`, `Unit`, `GST`, `S_Unit_Price`, `P_Unit_Price`, `Gross`, `Tax`) VALUES (null,'$name_input','active','$user','$stock_id','','$model_input','$barcode_input','$SKU_input','$HSN_input','$Unit_input','$gst_input','$sell_unit_price','$purchase_unit_price','$ex_gst_unit_price','$gst_unit_price')";
                         $result = mysqli_query($conn, $query);
                         echo "<meta http-equiv=\"refresh\" content=\"0; url=brands-manager.php?id=$stock_id\">";
                     } else {
@@ -119,8 +119,8 @@ $stock_id = $_GET['id'];
                                 <br><br>
                             </div>
                             <p style='font-weight: 300; font-size: 14px; color: #333;'>GST</p>
-                            <select name="gst" id="gst_data" class="form_control" onkeyup="keyupcalculate()" />
-                            <option value="<?php echo $gst_input; ?>">GST <?php echo $gst_input; ?>%</option>
+                            <select name="gst_data" id="gst_data" class="form_control" onkeyup="keyupcalculate()" />
+                            <option value="<?php echo $gst_data; ?>">GST <?php echo $gst_data; ?>%</option>
                             <option value="5">GST 5%</option>
                             <option value="12">GST 12%</option>
                             <option value="18">GST 18%</option>
@@ -152,13 +152,13 @@ $stock_id = $_GET['id'];
                                     <br><br>
                                     <p id="include_amt" style='font-weight: 300; font-size: 14px; color: #333;'>Gross Price</p>
                                     <p id="exclude_amt" style='font-weight: 300; font-size: 14px; color: #333; display: none;'>Excluding GST</p>
-                                    <input type='text' name="ex_gst_unit_price" id="ex_gst_unit_price" placeholder="Calculating..." value="<?php echo $purchase_unit_price; ?>" class="form_control" disabled="disabled" />
+                                    <input type='text' name="ex_gst_unit_price" id="ex_gst_unit_price" placeholder="Calculating..." value="<?php echo $purchase_unit_price; ?>" class="form_control" />
                                     <br><br>
                                     <p style='font-weight: 300; font-size: 14px; color: #333;'>Extracted GST%</p>
-                                    <input type='text' name="gst_unit_price" id="gst_unit_price" placeholder="Calculating..." value="<?php echo $gst_unit_price; ?>" class="form_control" disabled="disabled" />
+                                    <input type='text' name="gst_unit_price" id="gst_unit_price" placeholder="Calculating..." value="<?php echo $gst_unit_price; ?>" class="form_control" />
                                     <br><br>
                                     <p style='font-weight: 300; font-size: 14px; color: #333;'>Total Price</p>
-                                    <input type='text' name="gross_unit_price" id="gross_unit_price" placeholder="Calculating..." value="<?php echo $gross_unit_price; ?>" class="form_control" disabled="disabled" />
+                                    <input type='text' name="gross_unit_price" id="gross_unit_price" placeholder="Calculating..." value="<?php echo $gross_unit_price; ?>" class="form_control" />
                                     <br><br>
                                 </div>
                             </div>
